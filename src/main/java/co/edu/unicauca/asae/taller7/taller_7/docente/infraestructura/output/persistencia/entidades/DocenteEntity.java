@@ -3,6 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.per
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.output.persistencia.entidades.CursoEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

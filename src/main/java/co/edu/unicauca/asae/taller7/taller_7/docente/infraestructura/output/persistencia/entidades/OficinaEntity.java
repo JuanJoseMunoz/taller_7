@@ -3,7 +3,6 @@ package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.per
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
