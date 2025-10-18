@@ -5,7 +5,7 @@ import java.util.List;
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 
 public interface GestionarDocenteGetwayIntPort {
-    public boolean existeDocentePorId(Integer id);
+    public boolean existeDocente(Integer id);
 
     public Docente guardarDocente(Docente objDocente);
 

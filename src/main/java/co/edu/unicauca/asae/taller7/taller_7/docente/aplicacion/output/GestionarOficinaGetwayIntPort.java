@@ -5,7 +5,7 @@ import java.util.List;
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Oficina;
 
 public interface GestionarOficinaGetwayIntPort {
-    public boolean existeOficinaPorId(Integer id);
+    public boolean existeOficina(Integer id);
 
     public Oficina guardarOficina(Oficina objOficina);
 
@@ -13,7 +13,7 @@ public interface GestionarOficinaGetwayIntPort {
 
     public List<Oficina> listarOficinas();
 
-    public Oficina actualizarDocente(Oficina objDocente);
+    public Oficina actualizarOficina(Oficina objOficina);
 
     public Oficina eliminarOficina(Integer id);
 }

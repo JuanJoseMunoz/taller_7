@@ -24,7 +24,7 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGetwa
     }
 
     @Override
-    public boolean existeDocentePorId(Integer id) {
+    public boolean existeDocente(Integer id) {
         return objDocenteRepository.existsById(id);
     }
 
