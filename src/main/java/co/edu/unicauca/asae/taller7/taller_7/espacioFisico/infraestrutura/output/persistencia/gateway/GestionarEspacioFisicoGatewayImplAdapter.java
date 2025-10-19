@@ -25,6 +25,13 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
     }
     
     @Override
+    public EspacioFisico guardarEspacioFisico(EspacioFisico objEspacioFisico) {
+        EspacioFisicoEntity espacioFisicoEntity = this.espacioFisicoModelMapper.map(objEspacioFisico, EspacioFisicoEntity.class);
+        EspacioFisicoEntity espacioGuardado = this.objEspacioFisicoRepository.save(espacioFisicoEntity);
+        return this.espacioFisicoModelMapper.map(espacioGuardado, EspacioFisico.class);
+    }
+    
+    @Override
     public List<EspacioFisico> listarEspaciosFisicos(String nombre, Integer capacidadMinima) {
         Iterable<EspacioFisicoEntity> listaEspaciosFisicosEntity = this.objEspacioFisicoRepository.findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(nombre, capacidadMinima);
         List<EspacioFisico> listaEspaciosFisicos = this.espacioFisicoModelMapper.map(listaEspaciosFisicosEntity, new TypeToken<List<EspacioFisico>>() {

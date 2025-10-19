@@ -5,6 +5,8 @@ import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.Espac
 
 public interface GestionarEspacioFisicoCUIntPort {
     
+    EspacioFisico crearEspacioFisico(EspacioFisico objEspacioFisico);
+    
     List<EspacioFisico> listarEspaciosFisicos(String patron, Integer capacidadMinima);
      
     Object actualizarEstadoEspacioFisico(Integer id, String estado);

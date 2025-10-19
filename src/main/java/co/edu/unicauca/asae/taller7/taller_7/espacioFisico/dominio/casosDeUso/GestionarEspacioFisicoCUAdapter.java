@@ -11,10 +11,44 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
      
     private final GestionarEspacioFisicoGatewayIntPort objGestionarEspacioFisicoGateway;
     private final FormateadorResultadosIntPort objEspacioFisicoFormateadorResultados;
-    
+     
     public GestionarEspacioFisicoCUAdapter(GestionarEspacioFisicoGatewayIntPort objGestionarEspacioFisicoGateway, FormateadorResultadosIntPort objEspacioFisicoFormateadorResultados) {
         this.objGestionarEspacioFisicoGateway = objGestionarEspacioFisicoGateway;
         this.objEspacioFisicoFormateadorResultados = objEspacioFisicoFormateadorResultados;
+    }
+
+    private boolean datosValidos(EspacioFisico objEspacioFisico) {
+        if (objEspacioFisico == null) {
+            this.objEspacioFisicoFormateadorResultados.retornarRespuestaErrorReglaDeNegocio("Error: el espacio fisico no puede ser nulo");
+            return false;
+        }
+
+        if (!objEspacioFisico.tieneNombreValido() || !objEspacioFisico.tieneCapacidadValida() || !objEspacioFisico.tieneEstadoValido()) {
+            this.objEspacioFisicoFormateadorResultados
+                    .retornarRespuestaErrorReglaDeNegocio(
+                            "Error: datos básicos inválidos para el espacio físico (nombre, capacidad o estado)");
+            return false;
+        }
+
+        return true;
+    }
+    
+    @Override
+    public EspacioFisico crearEspacioFisico(EspacioFisico objEspacioFisico) {
+        EspacioFisico objEspacioFisicoCreado = null;
+
+        if (!datosValidos(objEspacioFisico)) {
+            return null;
+        }
+
+        if (this.objGestionarEspacioFisicoGateway.existeEspacioFisico(objEspacioFisico.getId())) {
+            this.objEspacioFisicoFormateadorResultados
+                    .retornarRespuestaErrorEntidadExiste("Error: ya existe un espacio físico con ese id");
+        } else {
+            objEspacioFisicoCreado = this.objGestionarEspacioFisicoGateway.guardarEspacioFisico(objEspacioFisico);
+        }
+
+        return objEspacioFisicoCreado;
     }
     
     @Override

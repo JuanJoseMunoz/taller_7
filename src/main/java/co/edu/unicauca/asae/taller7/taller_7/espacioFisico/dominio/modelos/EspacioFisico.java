@@ -15,4 +15,21 @@ public class EspacioFisico {
 
     public EspacioFisico() {
     }
+
+    public boolean tieneNombreValido() {
+        return this.nombre != null && !this.nombre.trim().isEmpty() && this.nombre.length() <= 255;
+    }
+
+    public boolean tieneCapacidadValida() {
+        return this.capacidad > 0;
+    }
+
+    public boolean tieneEstadoValido() {
+        return this.estado != null && 
+               ("activo".equalsIgnoreCase(this.estado) || "inactivo".equalsIgnoreCase(this.estado));
+    }
+
+    public boolean tieneCapacidadSuficiente(int matriculaEstimada) {
+        return this.capacidad >= matriculaEstimada;
+    }
 }
