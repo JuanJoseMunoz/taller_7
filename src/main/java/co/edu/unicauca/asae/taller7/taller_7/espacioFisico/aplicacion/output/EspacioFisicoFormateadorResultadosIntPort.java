@@ -1,5 +1,0 @@
-package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output;
-
-public class EspacioFisicoFormateadorResultadosIntPort {
-    
-}

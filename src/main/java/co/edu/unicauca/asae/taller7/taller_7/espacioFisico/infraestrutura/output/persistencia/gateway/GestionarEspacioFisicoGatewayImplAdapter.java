@@ -1,5 +1,68 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.gateway;
 
-public class GestionarEspacioFisicoGatewayImplAdapter {
+import java.util.List;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
+
+import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output.GestionarEspacioFisicoGatewayIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.EspacioFisico;
+import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.entidades.EspacioFisicoEntity;
+import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.repositorios.EspacioFisicoRepositoryInt;
+import jakarta.transaction.Transactional;
+
+@Service
+public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspacioFisicoGatewayIntPort {
     
+    private final EspacioFisicoRepositoryInt objEspacioFisicoRepository;
+    private final ModelMapper espacioFisicoModelMapper; 
+    
+    public GestionarEspacioFisicoGatewayImplAdapter(EspacioFisicoRepositoryInt objEspacioFisicoRepository, ModelMapper espacioFisicoModelMapper) {
+        this.objEspacioFisicoRepository = objEspacioFisicoRepository;
+        this.espacioFisicoModelMapper = espacioFisicoModelMapper;
+    }
+    
+    @Override
+    public List<EspacioFisico> listarEspaciosFisicos(String nombre, Integer capacidadMinima) {
+        Iterable<EspacioFisicoEntity> listaEspaciosFisicosEntity = this.objEspacioFisicoRepository.findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(nombre, capacidadMinima);
+        List<EspacioFisico> listaEspaciosFisicos = this.espacioFisicoModelMapper.map(listaEspaciosFisicosEntity, new TypeToken<List<EspacioFisico>>() {
+        }.getType());
+        return listaEspaciosFisicos;
+    }
+    
+    @Override
+    public boolean existeEspacioFisico(Integer id) {
+        return objEspacioFisicoRepository.existsById(id);
+    }
+    
+    @Override
+    public boolean estaOcupadoEspacioFisico(String dia, String horaInicio, String horaFin, Integer idEspacioFisico) {
+        return this.objEspacioFisicoRepository.existeFranjaHorariaEnEspacioFisico(dia, horaInicio, horaFin, idEspacioFisico);
+    }
+    
+    @Override
+    @Transactional
+    public EspacioFisico actualizarEstadoEspacioFisico(Integer id, String estado) {
+        this.objEspacioFisicoRepository.actualizarEstado(id, estado);
+        Optional<EspacioFisicoEntity> espacioFisicoEntity = this.objEspacioFisicoRepository.findById(id);
+        if (espacioFisicoEntity.isPresent()) {
+            EspacioFisicoEntity objEspacioFisicoEntityActualizado = espacioFisicoEntity.get();
+            EspacioFisico objEspacioFisicoRespuesta = this.espacioFisicoModelMapper.map(objEspacioFisicoEntityActualizado, EspacioFisico.class);
+            return objEspacioFisicoRespuesta;
+        }
+        return null;
+    }
+    
+    @Override
+    public EspacioFisico buscarEspacioFisicoPorId(Integer id) {
+        Optional<EspacioFisicoEntity> objEspacioFisicoEntity = this.objEspacioFisicoRepository.findById(id);
+        if (objEspacioFisicoEntity.isPresent()) {  
+            EspacioFisicoEntity objEspacioFisicoEntityEncontrado = objEspacioFisicoEntity.get();
+            EspacioFisico objEspacioFisicoRespuesta = this.espacioFisicoModelMapper.map(objEspacioFisicoEntityEncontrado, EspacioFisico.class);
+            return objEspacioFisicoRespuesta;
+        }
+        return null;
+    }
 }
