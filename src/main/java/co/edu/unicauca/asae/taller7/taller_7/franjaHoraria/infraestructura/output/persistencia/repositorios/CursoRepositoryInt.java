@@ -1,16 +1,20 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.output.persistencia.repositorios;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Curso;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.output.persistencia.entidades.CursoEntity;
 
-public interface CursoRepositoryInt extends JpaRepository<Curso, Integer>{
+public interface CursoRepositoryInt extends JpaRepository<CursoEntity, Integer>{
     
-    public Iterable<Curso> findByobjAsignaturaNombre(String nombreAsig); 
+    List<CursoEntity> findByObjAsignaturaNombre(String nombreAsignatura); 
 
-    @Query("SELECT c, f, e FROM Curso c JOIN c.franjasHorarias f JOIN f.objEspacioFisico e WHERE c.idCurso = :id")
-    Iterable<Object[]> consultarByCurso(@Param("id") Integer id);
-    
+    @Query("SELECT c, f, e FROM CursoEntity c " +
+           "JOIN c.franjasHorarias f " +
+           "JOIN f.objEspacioFisico e " +
+           "WHERE c.idCurso = :idCurso")
+    List<Object[]> consultarByCurso(@Param("idCurso") Integer idCurso);
 }

@@ -2,8 +2,7 @@ package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.outp
 
 import java.time.LocalTime;
 
-import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.EspacioFisico;
-import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Curso;
+import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.entidades.EspacioFisicoEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,12 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "franjas_horarias")
 public class FranjaHorariaEntity {
     @Id
@@ -29,16 +30,26 @@ public class FranjaHorariaEntity {
     private String dia;
 
     @Column(nullable = false)
-    private LocalTime hora_inicio;
+    private LocalTime horaInicio;
 
     @Column(nullable = false)
-    private LocalTime hora_fin;
+    private LocalTime horaFin;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "espacio_fisico_id", nullable = false)
-    private EspacioFisico objEspacioFisico;
+    private EspacioFisicoEntity objEspacioFisico;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "curso_id", nullable = false)
-    private Curso objCurso;
+    private CursoEntity objCurso;
+
+    public FranjaHorariaEntity() {}
+
+    /* 
+    public FranjaHorariaEntity(String dia, LocalTime horaInicio, LocalTime horaFin) {
+        this.dia = dia;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+    */
 }

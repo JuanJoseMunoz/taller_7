@@ -12,15 +12,11 @@ public interface EspacioFisicoRepositoryInt extends JpaRepository<EspacioFisicoE
     List<EspacioFisicoEntity> findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(String nombre, Integer capacidadMinima);
 
     @Modifying
-    @Query("UPDATE EspacioFisicoEntity ef SET ef.estado = :estado WHERE ef.id = :id")
-    public int actualizarEstado(@Param("id") Integer id, @Param("estado") String estado);
+    @Query(value = "UPDATE espacios_fisicos SET estado = :estado WHERE id = :id", nativeQuery = true)
+    int actualizarEstado(@Param("id") Integer id, @Param("estado") String estado);
     
     @Query("SELECT CASE WHEN COUNT(fh) > 0 THEN true ELSE false END FROM FranjaHorariaEntity fh " +
-           "JOIN fh.objEspacioFisico ef " +
-           "WHERE ef.id = :idEspacioFisico AND fh.dia = :dia " +
-           "AND fh.horaInicio = :horaInicio AND fh.horaFin = :horaFin")
-    boolean existeFranjaHorariaEnEspacioFisico(@Param("dia") String dia, 
-                                               @Param("horaInicio") String horaInicio, 
-                                               @Param("horaFin") String horaFin, 
-                                               @Param("idEspacioFisico") Integer idEspacioFisico);
+           "WHERE fh.objEspacioFisico.id = :idEspacioFisico AND fh.dia = :dia " +
+           "AND fh.horaInicio < :horaFin AND fh.horaFin > :horaInicio")
+    boolean existeFranjaHorariaEnEspacioFisico(@Param("idEspacioFisico") Integer idEspacioFisico, @Param("dia") String dia, @Param("horaInicio") java.time.LocalTime horaInicio, @Param("horaFin") java.time.LocalTime horaFin);
 }

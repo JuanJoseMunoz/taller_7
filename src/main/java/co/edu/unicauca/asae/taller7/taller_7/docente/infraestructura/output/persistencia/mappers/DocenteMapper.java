@@ -6,8 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DocenteMapper {
+    
     @Bean
-    public ModelMapper docenteMapper() {
+    public ModelMapper crearDocenteMapper() {
         return new ModelMapper();
     }
 }

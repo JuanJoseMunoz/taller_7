@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.casosDeUso;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
@@ -66,8 +67,8 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
     }
 
     @Override
-    public boolean estaOcupadoEspacioFisico(String dia, String horaInicio, String horaFin, Integer idEspacioFisico) {
-        return this.objGestionarEspacioFisicoGateway.estaOcupadoEspacioFisico(dia, horaInicio, horaFin, idEspacioFisico);
+    public boolean estaOcupadoEspacioFisico(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin) {
+        return this.objGestionarEspacioFisicoGateway.estaOcupadoEspacioFisico(idEspacioFisico, dia, horaInicio, horaFin);
     }
 
     @Override

@@ -3,7 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.outpu
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDTORespuesta;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.output.persistencia.entidades.FranjaHorariaEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,19 +28,19 @@ public class EspacioFisicoEntity {
     private String nombre;
 
     @Column(nullable = false)
-    private int capacidad;
+    private Integer capacidad;
 
     @Column(nullable = false, length = 8)
     private String estado;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objEspacioFisico")
-    private List<FranjaHorariaDTORespuesta> franjasHorarias;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objEspacioFisico")
+    private List<FranjaHorariaEntity> franjasHorarias;
 
     public EspacioFisicoEntity() {
-        this.franjasHorarias = new ArrayList<FranjaHorariaDTORespuesta>();
+        this.franjasHorarias = new ArrayList<FranjaHorariaEntity>();
     }
 
-    public void agregarFranjaHoraria(FranjaHorariaDTORespuesta objFranjaHoraria) {
+    public void agregarFranjaHoraria(FranjaHorariaEntity objFranjaHoraria) {
         this.franjasHorarias.add(objFranjaHoraria);
     }
 }

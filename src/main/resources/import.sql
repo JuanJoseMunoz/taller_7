@@ -5,7 +5,7 @@ INSERT INTO `asignaturas` (`id`, `nombre`, `codigo`) VALUES (NULL, 'Teoria de la
 INSERT INTO `oficinas` (`id`, `nombre`, `ubicacion`) VALUES (NULL, 'Oficina 329', 'FIET');
 INSERT INTO `oficinas` (`id`, `nombre`, `ubicacion`) VALUES (NULL, 'Oficina 450', 'FIET');
 INSERT INTO `oficinas` (`id`, `nombre`, `ubicacion`) VALUES (NULL, 'Oficina 444', 'FIET');
-
+ 
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Nestor', 'Diaz', 'nestor@unicauca.edu.co');
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Martha', 'Mendoza', 'martha@unicauca.edu.co');
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Ricardo', 'Zambrano', 'ricardo@unicauca.edu.co');
@@ -14,9 +14,9 @@ INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (1, 1);
 INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (2, 2);
 INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (3, 3);
 
-INSERT INTO `cursos` (`idCurso`, `nombre`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos A', 1);
-INSERT INTO `cursos` (`idCurso`, `nombre`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos B', 1);
-INSERT INTO `cursos` (`idCurso`, `nombre`, `asignatura_id`) VALUES (NULL, 'Bases de datos A', 2);
+INSERT INTO `cursos` (`idCurso`, `nombre`, `matriculaEstimada`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos A', 30, 1);
+INSERT INTO `cursos` (`idCurso`, `nombre`, `matriculaEstimada`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos B', 35, 1);
+INSERT INTO `cursos` (`idCurso`, `nombre`, `matriculaEstimada`, `asignatura_id`) VALUES (NULL, 'Bases de datos A',38, 2);
 
 INSERT INTO `cursosdocente` (`idCurso`, `idDocente`) VALUES (1, 1);
 INSERT INTO `cursosdocente` (`idCurso`, `idDocente`) VALUES (2, 1);

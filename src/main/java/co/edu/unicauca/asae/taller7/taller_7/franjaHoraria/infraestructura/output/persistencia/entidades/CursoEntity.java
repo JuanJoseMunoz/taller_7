@@ -3,8 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.outp
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
-import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Asignatura;
+import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.entidades.DocenteEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,27 +32,30 @@ public class CursoEntity {
     @Column(unique = true, nullable = false, length = 255)
     private String nombre;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objCurso", cascade = CascadeType.REMOVE)
+    @Column(nullable = false)
+    private Integer matriculaEstimada;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objCurso", cascade = CascadeType.REMOVE)
     private List<FranjaHorariaEntity> franjasHorarias;
 
     @ManyToOne()
     @JoinColumn(name = "asignatura_id", nullable = false)
-    private Asignatura objAsignatura;
+    private AsignaturaEntity objAsignatura;
 
     @ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "cursosdocente", joinColumns = @JoinColumn(name = "idCurso"), inverseJoinColumns = @JoinColumn(name = "idDocente"))
-	private List<Docente> listaDocentes;
+	private List<DocenteEntity> listaDocentes;
 
     public CursoEntity() {
         this.franjasHorarias = new ArrayList<FranjaHorariaEntity>();
-        this.listaDocentes = new ArrayList<Docente>();
+        this.listaDocentes = new ArrayList<DocenteEntity>();
     }
 
     public void agregarFranjaHoraria(FranjaHorariaEntity objFranjaHoraria) {
         this.franjasHorarias.add(objFranjaHoraria);
     }
 
-    public void agregarDocente(Docente objDocente) {
+    public void agregarDocente(DocenteEntity objDocente) {
         this.listaDocentes.add(objDocente);
     }
 }

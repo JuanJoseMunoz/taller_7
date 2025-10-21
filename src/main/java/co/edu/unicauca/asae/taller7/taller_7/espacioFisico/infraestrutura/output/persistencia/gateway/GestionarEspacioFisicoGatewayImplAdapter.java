@@ -1,10 +1,12 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.gateway;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output.GestionarEspacioFisicoGatewayIntPort;
@@ -45,8 +47,8 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
     }
     
     @Override
-    public boolean estaOcupadoEspacioFisico(String dia, String horaInicio, String horaFin, Integer idEspacioFisico) {
-        return this.objEspacioFisicoRepository.existeFranjaHorariaEnEspacioFisico(dia, horaInicio, horaFin, idEspacioFisico);
+    public boolean estaOcupadoEspacioFisico(Integer  idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin) {
+        return this.objEspacioFisicoRepository.existeFranjaHorariaEnEspacioFisico(idEspacioFisico, dia, horaInicio, horaFin);
     }
     
     @Override

@@ -2,7 +2,6 @@ package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.outp
 
 import java.util.ArrayList;
 
-import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,13 +31,13 @@ public class AsignaturaEntity {
     private String codigo;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objAsignatura")
-    private List<Curso> cursos;
-
+    private List<CursoEntity> cursos;
+ 
     public AsignaturaEntity() {
-        this.cursos = new ArrayList<Curso>();
+        this.cursos = new ArrayList<CursoEntity>();
     }
 
-    public void agregarCurso(Curso curso) {
+    public void agregarCurso(CursoEntity curso) {
         cursos.add(curso);
     }
 }
