@@ -8,7 +8,7 @@ import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output.Ges
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.casosDeUso.GestionarEspacioFisicoCUAdapter;
 
 @Configuration
-public class BeanConfigurations {
+public class BeanEspacioFisicoConfigurations {
     
     @Bean
     public GestionarEspacioFisicoCUAdapter crearGestionarEspacioFisicoCUInt(

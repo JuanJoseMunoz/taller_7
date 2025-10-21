@@ -8,7 +8,7 @@ import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.output.Gestionar
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.casosDeUso.GestionarDocenteCUAdapter;
 
 @Configuration
-public class BeanConfigurations {
+public class BeanDocenteConfigurations {
     
     @Bean
     public GestionarDocenteCUAdapter crearGestionarDocenteCUInt(
