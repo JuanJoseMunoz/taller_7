@@ -1,16 +1,15 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.configuracion;
 
-//import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
-//import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output.GestionarFranjaHorariaGatewayIntPort;
-//import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.casosDeUso.GestionarFranjaHorariaCUAdapter;
-
+import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output.GestionarFranjaHorariaGatewayIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.casosDeUso.GestionarFranjaHorariaCUAdapter;
 
 @Configuration
 public class BeanConfigurations {
-    /* 
+    
     @Bean
     public GestionarFranjaHorariaCUAdapter crearGestionarFranjaHorariaCUInt(
             GestionarFranjaHorariaGatewayIntPort objGestionarFranjaHorariaGateway,
@@ -19,7 +18,6 @@ public class BeanConfigurations {
                 objFranjaHorariaFormateadorResultados);
         return objGestionarFranjaHorariaCU;
     }
-    */
     
 }
 
@@ -64,4 +62,20 @@ Utilizar una query para crear una sentencia que permita eliminar las flanjas hor
 • Crear docente. Este servicio permite registrar un docente, persona y la oficina de trabajo asignada, y posteriormente debe almacenar el docente, persona y la oficina en la base de datos. El servicio debe recibir un objeto de tipo DocenteDTO dentro del cual se encuentra un objeto de tipo OficinaDTO. No debe enviar el id del docente ni el id de la oficina. Utilice la acción encascada persist para que al almacenar el docente se almacenen en cascada la persona y oficina. Únicamente debe usar un save del repositorio de docente.
 • Listar franja horaria por docente. Este servicio debe mostrar las franjas horarias, espacios físicos y cursos de un docente. El servicio debe recibir el id del docente por la URL y retornar las franjas horarias. Para retornar las franjas horarias utilice un objeto de tipo franjaHorariaDeDocenteDTORespuesta. Utilice el ligado eager para traer los Cursos y Espacio Físicos.
 • Listar franja horaria por curso. Este servicio debe mostrar las franjas horarias, espacios físicos y cursos de un docente. El servicio debe recibir el id del curso por la URL y retornar las franjas horarias que tiene. Para retornar las franjas horarias utilice un objeto de tipo franjaHorariaDeCursoDTORespuesta. Utilice el
- */
+ligado lazy para no traer el curso, pero si los datos de los espacios físicos y docentes. Recuerde modificar el mapper entre las entity y las clases del dominio.
+• Listar espacios físicos. Este servicio debe mostrar los Espacios Físicos. Para retornar los espacios físicos utilice el método creado mediante keyWords del punto 1.
+7.-Implementar la arquitectura hexagonal
+Cree los siguientes dominios: franja horaria, docente, espacio físico. Por cada dominio cree los paquetes aplicación, dominio e infraestructura.
+Paquete aplicación
+• En el paquete input debe crear una o varias interfaces (port) que permitan crear franja horaria, crear docente, listar franjas horarias y listar espacios físicos.
+• En el paquete output se debe crear interfaces (port) que permitan crear franja horaria, crear docente, listar franjas horarias, listar espacios físicos, y conectarse con las siguientes validaciones: validar que, al registrar una franja horaria, no este ocupado el espacio físico; validar que, al registrar una franja horaria, un docente no debe estar registrado al mismo tiempo; y Validar que, al crear un docente, no exista un docente con el mismo correo electrónico.
+• En paquete output se debe crear una interfaz que permita retornar respuestas de error cuando una entidad existe y retornar respuestas cuando ocurre un error en una regla de negocio. 
+Paquete dominio
+• En el paquete modelos se deben crear las clases docente, persona, oficina, franja horaria, curso, asignatura, y espacio físico.
+• En el paquete casos de uso se debe crear una clase o varias clases que implementen los port.
+Paquete infraestructura
+• En el paquete configuración se deben generar los beans correspondientes.
+• En el paquete input debemos ubicar los controladores que ofrecen los servicios REST; los DTO que encapsularan los datos enviados al controlador, los DTO que encapsularan los datos a responder al cliente; y los mappers entre los DTO y el dominio.
+• En el paquete output se debe ubicar el controlador de excepciones; la implementación del port que permite formatear las respuestas; y en el sub-paquete persistencia las entidades, respositorios, mappers entre dominio y entity, y un Gateway que implementa el port para guardar docentes, listar flanjas horarias y listar espacios físicos en el medio de persistencia.
+
+*/
