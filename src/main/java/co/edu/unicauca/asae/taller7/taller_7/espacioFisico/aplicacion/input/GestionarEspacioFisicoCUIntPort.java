@@ -10,7 +10,7 @@ public interface GestionarEspacioFisicoCUIntPort {
     List<EspacioFisico> listarEspaciosFisicos(String patron, Integer capacidadMinima);
      
     Object actualizarEstadoEspacioFisico(Integer id, String estado);
-    
+     
     boolean estaOcupadoEspacioFisico(String dia, String horaInicio, String horaFin, Integer idEspacioFisico);
         
     EspacioFisico buscarEspacioFisicoPorId(Integer id);
