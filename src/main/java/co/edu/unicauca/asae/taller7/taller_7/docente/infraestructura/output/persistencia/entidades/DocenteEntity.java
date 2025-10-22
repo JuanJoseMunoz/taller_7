@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ import lombok.Setter;
 @PrimaryKeyJoinColumn(name = "persona_id")
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "docentes")
 public class DocenteEntity extends PersonaEntity {
     @ManyToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })

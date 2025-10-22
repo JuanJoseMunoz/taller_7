@@ -1,4 +1,4 @@
-package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.controladorExcepciones.estructuraExcepciones;
+package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.estructuraExcepciones;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,6 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Error {
-
     private String codigoError;
 
     private String mensaje;

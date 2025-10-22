@@ -1,6 +1,6 @@
-package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.controladorExcepciones.excepcionesPropias;
+package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.excepcionesPropias;
 
-import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.controladorExcepciones.estructuraExcepciones.CodigoError;
+import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.estructuraExcepciones.CodigoError;
 
 public class ReglaNegocioExcepcion extends GestionClientesRuntimeException {
     private static final String FORMATO_EXCEPCION = "%s - Violación a regla de negocio: %s";
@@ -16,4 +16,5 @@ public class ReglaNegocioExcepcion extends GestionClientesRuntimeException {
     public String formatException() {
         return String.format(FORMATO_EXCEPCION, codigoError.getCodigo(), reglaNegocio);
     }
+
 }

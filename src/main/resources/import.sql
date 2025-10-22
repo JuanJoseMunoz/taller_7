@@ -10,9 +10,9 @@ INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Nes
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Martha', 'Mendoza', 'martha@unicauca.edu.co');
 INSERT INTO `personas` (`id`, `nombre`, `apellido`, `correo`) VALUES (NULL, 'Ricardo', 'Zambrano', 'ricardo@unicauca.edu.co');
 
-INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (1, 1);
-INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (2, 2);
-INSERT INTO `docentes` (`IdDocente`, `oficina_id`) VALUES (3, 3);
+INSERT INTO `docentes` (`persona_id`, `oficina_id`) VALUES (1, 1);
+INSERT INTO `docentes` (`persona_id`, `oficina_id`) VALUES (2, 2);
+INSERT INTO `docentes` (`persona_id`, `oficina_id`) VALUES (3, 3);
 
 INSERT INTO `cursos` (`idCurso`, `nombre`, `matriculaEstimada`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos A', 30, 1);
 INSERT INTO `cursos` (`idCurso`, `nombre`, `matriculaEstimada`, `asignatura_id`) VALUES (NULL, 'Programacion orientada a objetos B', 35, 1);

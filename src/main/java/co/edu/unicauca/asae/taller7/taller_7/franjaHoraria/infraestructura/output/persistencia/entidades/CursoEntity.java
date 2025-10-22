@@ -17,12 +17,14 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "cursos")
 public class CursoEntity {
     @Id
@@ -38,7 +40,7 @@ public class CursoEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "objCurso", cascade = CascadeType.REMOVE)
     private List<FranjaHorariaEntity> franjasHorarias;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "asignatura_id", nullable = false)
     private AsignaturaEntity objAsignatura;
 

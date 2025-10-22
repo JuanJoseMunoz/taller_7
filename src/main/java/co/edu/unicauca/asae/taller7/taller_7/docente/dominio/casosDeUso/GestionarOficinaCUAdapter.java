@@ -2,16 +2,16 @@ package co.edu.unicauca.asae.taller7.taller_7.docente.dominio.casosDeUso;
 
 import java.util.List;
 
-import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.comons.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.input.GestionarOficinaCUIntPort;
-import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.output.GestionarOficinaGetwayIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.output.GestionarOficinaGatewayIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Oficina;
 
 public class GestionarOficinaCUAdapter implements GestionarOficinaCUIntPort {
-    private final GestionarOficinaGetwayIntPort objGestionarOficinaGateway;
+    private final GestionarOficinaGatewayIntPort objGestionarOficinaGateway;
     private final FormateadorResultadosIntPort objFormateadorResultados;
 
-    public GestionarOficinaCUAdapter(GestionarOficinaGetwayIntPort objGestionarOficinaGateway,
+    public GestionarOficinaCUAdapter(GestionarOficinaGatewayIntPort objGestionarOficinaGateway,
             FormateadorResultadosIntPort objFormateadorResultados) {
         this.objGestionarOficinaGateway = objGestionarOficinaGateway;
         this.objFormateadorResultados = objFormateadorResultados;

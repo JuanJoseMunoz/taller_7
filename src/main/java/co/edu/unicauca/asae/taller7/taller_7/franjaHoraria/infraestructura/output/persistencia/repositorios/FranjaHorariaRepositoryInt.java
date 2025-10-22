@@ -13,12 +13,7 @@ import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.outpu
 public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaEntity, Integer>{
     
     List<FranjaHorariaEntity> findByObjCursoIdCurso(Integer idCurso);
-    /* 
-    @Query("SELECT CASE WHEN COUNT(f) > 0 THEN true ELSE false END FROM FranjaHorariaEntity f " +
-           "WHERE f.objEspacioFisico.id = :idEspacioFisico AND f.dia = :dia " +
-           "AND f.horaInicio < :horaFin AND f.horaFin > :horaInicio")
-    boolean isEspacioFisicoOcupado(@Param("idEspacioFisico") Integer idEspacioFisico,  @Param("dia") String dia, @Param("horaInicio") LocalTime horaInicio, @Param("horaFin") LocalTime horaFin);
-    */
+
     @Query("SELECT COUNT(*) FROM EspacioFisico e JOIN e.franjasHorarias f WHERE e.id = :id AND f.dia = :dia AND f.hora_inicio < :horaInicio AND f.hora_fin > :horaFin") 
     int isEspacioFisicoOcupado(@Param("id") Integer id, @Param("dia") String dia, @Param("horaInicio") LocalTime horaInicio, @Param("horaFin") LocalTime horaFin);
 

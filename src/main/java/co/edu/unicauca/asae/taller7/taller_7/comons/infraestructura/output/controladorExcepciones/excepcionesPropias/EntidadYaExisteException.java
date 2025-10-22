@@ -1,6 +1,6 @@
-package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.controladorExcepciones.excepcionesPropias;
+package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.excepcionesPropias;
 
-import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.controladorExcepciones.estructuraExcepciones.CodigoError;
+import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.estructuraExcepciones.CodigoError;
 import lombok.Getter;
 
 @Getter
@@ -19,4 +19,5 @@ public class EntidadYaExisteException extends RuntimeException {
         this.llaveMensaje = CodigoError.ENTIDAD_YA_EXISTE.getLlaveMensaje();
         this.codigo = CodigoError.ENTIDAD_YA_EXISTE.getCodigo();
     }
+
 }

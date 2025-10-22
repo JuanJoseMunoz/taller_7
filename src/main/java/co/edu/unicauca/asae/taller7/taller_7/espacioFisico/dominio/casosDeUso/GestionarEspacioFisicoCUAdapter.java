@@ -3,7 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.casosDeUso;
 import java.time.LocalTime;
 import java.util.List;
 
-import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.comons.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.input.GestionarEspacioFisicoCUIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output.GestionarEspacioFisicoGatewayIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.EspacioFisico;
@@ -65,14 +65,15 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
         EspacioFisico espacioActualizado = this.objGestionarEspacioFisicoGateway.actualizarEstadoEspacioFisico(id, estado);
         return espacioActualizado;
     }
-
-    @Override
-    public boolean estaOcupadoEspacioFisico(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin) {
-        return this.objGestionarEspacioFisicoGateway.estaOcupadoEspacioFisico(idEspacioFisico, dia, horaInicio, horaFin);
-    }
-
     @Override
     public EspacioFisico buscarEspacioFisicoPorId(Integer id) {
         return this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id);
+    }
+
+    @Override
+    public boolean estaOcupadoEspacioFisico(Integer idEspacioFisico, String dia, LocalTime horaInicio,
+            LocalTime horaFin) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

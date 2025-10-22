@@ -6,19 +6,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
-public class FranjaHorariaDTORespuesta {
+public class FranjaHorariaDeDocenteDTORespuesta {
     private Integer id;
     private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
     private String nombreEspacioFisico;
+    private Integer capacidadEspacioFisico;
     private String nombreCurso;
     private String nombreAsignatura;
 
-    public FranjaHorariaDTORespuesta() {
+    public FranjaHorariaDeDocenteDTORespuesta() {
 
     }
 }

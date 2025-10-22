@@ -1,18 +1,21 @@
 package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.getway;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.output.GestionarDocenteGetwayIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.docente.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.entidades.DocenteEntity;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.repositories.DocenteRepositoryInt;
 import jakarta.transaction.Transactional;
 
-public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGetwayIntPort {
+@Service
+public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatewayIntPort {
 
     private final DocenteRepositoryInt objDocenteRepository;
     private final ModelMapper docenteModelMapper;
@@ -76,5 +79,17 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGetwa
         this.objDocenteRepository.delete(objDocenteEntityAEliminar);
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityAEliminar, Docente.class);
         return objDocenteRespuesta;
+    }
+
+    @Override
+    public boolean estaOcupadoDocente(Integer idDocente, String dia, LocalTime horaInicio, LocalTime horaFin) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean existeDocentePorCorreo(String correo) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

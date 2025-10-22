@@ -31,17 +31,17 @@ public class DocentesRestController {
 
     @PostMapping("/docentes")
     public ResponseEntity<DocenteDTORespuesta> create(@RequestBody @Valid DocenteDTOPeticion objDocente) {
-        Docente docenteCrear = objMapeador.mapperDePeticionADocente(objDocente);
+        Docente docenteCrear = objMapeador.mappearDePeticionADocente(objDocente);
         Docente docenteCreado = objGestionarDocenteCUInt.crearDocente(docenteCrear);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
-                objMapeador.mapperADTORespuestaDocente(docenteCreado), HttpStatus.CREATED);
+                objMapeador.mappearDeDocenteARespuesta(docenteCreado), HttpStatus.CREATED);
         return objRespuesta;
     }
 
     @GetMapping("/docentes")
     public ResponseEntity<List<DocenteDTORespuesta>> listar() {
         ResponseEntity<List<DocenteDTORespuesta>> objRespuesta = new ResponseEntity<List<DocenteDTORespuesta>>(
-                objMapeador.mapperADTORespuestaDocente(objGestionarDocenteCUInt.listarDocentes()), HttpStatus.OK);
+                objMapeador.mappearDeDocentesARespuesta(objGestionarDocenteCUInt.listarDocentes()), HttpStatus.OK);
         return objRespuesta;
     }
 
@@ -49,7 +49,7 @@ public class DocentesRestController {
     public ResponseEntity<DocenteDTORespuesta> buscarPorId(@PathVariable Integer id) {
         Docente docente = objGestionarDocenteCUInt.buscarDocentePorId(id);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
-                objMapeador.mapperADTORespuestaDocente(docente),
+                objMapeador.mappearDeDocenteARespuesta(docente),
                 HttpStatus.OK);
         return objRespuesta;
     }
@@ -57,13 +57,13 @@ public class DocentesRestController {
     @PutMapping("/docentes/{id}")
     public ResponseEntity<DocenteDTORespuesta> actualizar(@PathVariable Integer id,
             @RequestBody @Valid DocenteDTOPeticion peticion) {
-        Docente docenteActualizar = objMapeador.mapperDePeticionADocente(peticion);
+        Docente docenteActualizar = objMapeador.mappearDePeticionADocente(peticion);
 
         docenteActualizar.setId(id);
         Docente docenteActualizado = objGestionarDocenteCUInt.actualizarDocente(docenteActualizar);
 
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
-                objMapeador.mapperADTORespuestaDocente(docenteActualizado),
+                objMapeador.mappearDeDocenteARespuesta(docenteActualizado),
                 HttpStatus.OK);
         return objRespuesta;
     }
@@ -72,7 +72,7 @@ public class DocentesRestController {
     public ResponseEntity<DocenteDTORespuesta> eliminar(@PathVariable Integer id) {
         Docente docenteEliminado = objGestionarDocenteCUInt.eliminarDocente(id);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
-                objMapeador.mapperADTORespuestaDocente(docenteEliminado),
+                objMapeador.mappearDeDocenteARespuesta(docenteEliminado),
                 HttpStatus.OK);
         return objRespuesta;
     }

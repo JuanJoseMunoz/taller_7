@@ -10,9 +10,9 @@ import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.contr
 
 @Mapper(componentModel = "spring")
 public interface DocenteMapperInfraestructuraDominio {
-    Docente mapperDePeticionADocente(DocenteDTOPeticion peticion);
+    Docente mappearDePeticionADocente(DocenteDTOPeticion peticion);
 
-    DocenteDTORespuesta mapperADTORespuestaDocente(Docente docente);
+    DocenteDTORespuesta mappearDeDocenteARespuesta(Docente docente);
 
-    List<DocenteDTORespuesta> mapperADTORespuestaDocente(List<Docente> docentes);
+    List<DocenteDTORespuesta> mappearDeDocentesARespuesta(List<Docente> docentes);
 }

@@ -3,7 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.confi
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import co.edu.unicauca.asae.taller7.taller_7.comons.output.FormateadorResultadosIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.comons.aplicacion.output.FormateadorResultadosIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.output.GestionarEspacioFisicoGatewayIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.casosDeUso.GestionarEspacioFisicoCUAdapter;
 

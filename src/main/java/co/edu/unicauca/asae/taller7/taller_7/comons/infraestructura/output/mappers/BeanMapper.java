@@ -1,14 +1,13 @@
-package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.mappers;
+package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.mappers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DocenteMapper {
-    
+public class BeanMapper {
     @Bean
-    public ModelMapper crearDocenteMapper() {
+    public ModelMapper crearBeanMapper() {
         return new ModelMapper();
     }
 }

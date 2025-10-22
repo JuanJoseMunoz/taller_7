@@ -43,13 +43,6 @@ public class FranjaHorariaEntity {
     @JoinColumn(name = "curso_id", nullable = false)
     private CursoEntity objCurso;
 
-    public FranjaHorariaEntity() {}
-
-    /* 
-    public FranjaHorariaEntity(String dia, LocalTime horaInicio, LocalTime horaFin) {
-        this.dia = dia;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+    public FranjaHorariaEntity() {
     }
-    */
 }

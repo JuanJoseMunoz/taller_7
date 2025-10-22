@@ -47,11 +47,6 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
     }
     
     @Override
-    public boolean estaOcupadoEspacioFisico(Integer  idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin) {
-        return this.objEspacioFisicoRepository.existeFranjaHorariaEnEspacioFisico(idEspacioFisico, dia, horaInicio, horaFin);
-    }
-    
-    @Override
     @Transactional
     public EspacioFisico actualizarEstadoEspacioFisico(Integer id, String estado) {
         this.objEspacioFisicoRepository.actualizarEstado(id, estado);
