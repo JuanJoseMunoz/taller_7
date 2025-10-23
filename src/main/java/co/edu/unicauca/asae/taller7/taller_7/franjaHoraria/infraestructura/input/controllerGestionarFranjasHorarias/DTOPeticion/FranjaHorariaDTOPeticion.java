@@ -21,7 +21,7 @@ public class FranjaHorariaDTOPeticion {
     private LocalTime horaInicio;
 
     @NotNull(message = "{franja.horaFin.notnull}")
-    private LocalTime horaFin;
+    private LocalTime horaFin; 
 
     @NotNull(message = "{franja.espacioFisico.notnull}")
     private Integer idEspacioFisico;

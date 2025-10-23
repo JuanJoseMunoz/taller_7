@@ -15,7 +15,7 @@ public interface DocenteMapperInfraestructuraDominio {
     @Mapping(target = "oficina", source = "objOficina")
     @Mapping(target = "oficina.id", ignore = true)
     Docente mappearDePeticionADocente(DocenteDTOPeticion peticion);
-
+ 
     @Mapping(target = "oficina", source = "oficina")
     DocenteDTORespuesta mappearDeDocenteARespuesta(Docente docente);
 

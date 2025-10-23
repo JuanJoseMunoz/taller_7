@@ -40,19 +40,22 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
     }
     
     @Override
-    public boolean existeEspacioFisico(Integer id) {
-        return objEspacioFisicoRepository.existsById(id);
+    public boolean existeEspacioFisico(String nombre) {
+        return objEspacioFisicoRepository.existsByNombre(nombre);
     }
     
     @Override
-    @Transactional
+    @Transactional 
     public EspacioFisico actualizarEstadoEspacioFisico(Integer id, String estado) {
-        this.objEspacioFisicoRepository.actualizarEstado(id, estado);
-        Optional<EspacioFisicoEntity> espacioFisicoEntity = this.objEspacioFisicoRepository.findById(id);
-        if (espacioFisicoEntity.isPresent()) {
-            EspacioFisicoEntity objEspacioFisicoEntityActualizado = espacioFisicoEntity.get();
-            EspacioFisico objEspacioFisicoRespuesta = this.espacioFisicoModelMapper.map(objEspacioFisicoEntityActualizado, EspacioFisico.class);
-            return objEspacioFisicoRespuesta;
+        int bandera = this.objEspacioFisicoRepository.actualizarEstado(id, estado);
+        if (bandera > 0) {
+            this.objEspacioFisicoRepository.flush();
+            Optional<EspacioFisicoEntity> espacioFisicoEntity = this.objEspacioFisicoRepository.findById(id);
+            if (espacioFisicoEntity.isPresent()) {
+                EspacioFisicoEntity objEspacioFisicoEntityActualizado = espacioFisicoEntity.get();
+                EspacioFisico objEspacioFisicoRespuesta = this.espacioFisicoModelMapper.map(objEspacioFisicoEntityActualizado, EspacioFisico.class);
+                return objEspacioFisicoRespuesta;
+            }
         }
         return null;
     }

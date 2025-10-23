@@ -8,7 +8,7 @@ public interface GestionarEspacioFisicoGatewayIntPort {
     
     List<EspacioFisico> listarEspaciosFisicos(String nombre, Integer capacidadMinima);
     
-    boolean existeEspacioFisico(Integer id);
+    boolean existeEspacioFisico(String nombre);
         
     EspacioFisico actualizarEstadoEspacioFisico(Integer id, String estado);
     

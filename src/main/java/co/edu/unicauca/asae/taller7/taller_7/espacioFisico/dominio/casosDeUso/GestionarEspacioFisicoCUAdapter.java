@@ -42,7 +42,7 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
             return null;
         }
 
-        if (this.objGestionarEspacioFisicoGateway.existeEspacioFisico(objEspacioFisico.getId())) {
+        if (this.objGestionarEspacioFisicoGateway.existeEspacioFisico(objEspacioFisico.getNombre())) {
             this.objEspacioFisicoFormateadorResultados
                     .retornarRespuestaErrorEntidadExiste("Error: ya existe un espacio físico con ese id");
         } else {
@@ -53,21 +53,26 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
     }
     
     @Override
-    public List<EspacioFisico> listar(String patron, Integer capacidadMinima) {
-        return this.objGestionarEspacioFisicoGateway.listarEspaciosFisicos(patron, capacidadMinima);
+    public List<EspacioFisico> listar(String nombre, Integer capacidadMinima) {
+        return this.objGestionarEspacioFisicoGateway.listarEspaciosFisicos(nombre, capacidadMinima);
     }
     
     @Override
-    public Object actualizarEstado(Integer id, String estado) {
-        if (!this.objGestionarEspacioFisicoGateway.existeEspacioFisico(id)) {
+    public EspacioFisico actualizarEstado(Integer id, String estado) {
+        if (this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id) == null) {
             this.objEspacioFisicoFormateadorResultados.retornarRespuestaErrorEntidadNoExiste("Error: no existe un espacio físico con id " + id);
         }
         EspacioFisico espacioActualizado = this.objGestionarEspacioFisicoGateway.actualizarEstadoEspacioFisico(id, estado);
         return espacioActualizado;
     }
+
     @Override
     public EspacioFisico buscarById(Integer id) {
-        return this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id);
+        if (this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id) == null) {
+            this.objEspacioFisicoFormateadorResultados.retornarRespuestaErrorEntidadNoExiste("Error: no existe un espacio físico con id " + id);
+        }
+        EspacioFisico espacioEncontrado = this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id);
+        return espacioEncontrado;
     }
 
     @Override

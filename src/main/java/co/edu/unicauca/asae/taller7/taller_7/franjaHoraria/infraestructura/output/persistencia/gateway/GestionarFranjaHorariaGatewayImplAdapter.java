@@ -18,7 +18,6 @@ import jakarta.transaction.Transactional;
 public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranjaHorariaGatewayIntPort {
     private final FranjaHorariaRepositoryInt objFranjaHorariaRepository;
     private final CursoRepositoryInt objCursoRepository;
-    private final EspacioFisicoRepositoryInt objEspacioFisicoRepository;
     private final ModelMapper franjaHorariaModelMapper;
 
     public GestionarFranjaHorariaGatewayImplAdapter(FranjaHorariaRepositoryInt objFranjaHorariaRepository,
@@ -27,7 +26,6 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
             ModelMapper franjaHorariaModelMapper) {
         this.objFranjaHorariaRepository = objFranjaHorariaRepository;
         this.objCursoRepository = objCursoRepository;
-        this.objEspacioFisicoRepository = objEspacioFisicoRepository;
         this.franjaHorariaModelMapper = franjaHorariaModelMapper;
     } 
 

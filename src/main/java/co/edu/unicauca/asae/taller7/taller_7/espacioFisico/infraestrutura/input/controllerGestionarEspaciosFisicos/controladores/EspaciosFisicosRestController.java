@@ -42,10 +42,10 @@ public class EspaciosFisicosRestController {
 
     @GetMapping("/espaciosFisicos")
     public ResponseEntity<List<EspacioFisicoDTORespuesta>> listar(
-            @RequestParam(required = false) String patron,
+            @RequestParam(required = false) String nombre,
             @RequestParam(required = false) Integer capacidadMinima) {
         ResponseEntity<List<EspacioFisicoDTORespuesta>> objRespuesta = new ResponseEntity<List<EspacioFisicoDTORespuesta>>(
-                objMapeador.mappearDeEspaciosFisicosARespuesta(objGestionarEspacioFisicoCUInt.listar(patron, capacidadMinima)), HttpStatus.OK);
+                objMapeador.mappearDeEspaciosFisicosARespuesta(objGestionarEspacioFisicoCUInt.listar(nombre, capacidadMinima)), HttpStatus.OK);
         return objRespuesta;
     }
 
@@ -58,10 +58,11 @@ public class EspaciosFisicosRestController {
         return objRespuesta;
     }
 
-    @PutMapping("/espaciosFisicos/{id}/estado")
-    public ResponseEntity<Object> actualizarEstado(@PathVariable Integer id, @RequestParam String estado) {
-        Object resultado = objGestionarEspacioFisicoCUInt.actualizarEstado(id, estado);
-        ResponseEntity<Object> objRespuesta = new ResponseEntity<Object>(resultado, HttpStatus.OK);
+    @PutMapping("/espaciosFisicos/estado/{id}")
+    public ResponseEntity<EspacioFisicoDTORespuesta> actualizarEstado(@PathVariable Integer id, @RequestParam String estado) {
+        EspacioFisico espacioFisico = objGestionarEspacioFisicoCUInt.actualizarEstado(id, estado);
+        ResponseEntity<EspacioFisicoDTORespuesta> objRespuesta = new ResponseEntity<EspacioFisicoDTORespuesta>(
+                objMapeador.mappearDeEspacioFisicoARespuesta(espacioFisico), HttpStatus.OK);
         return objRespuesta;
     }
 
@@ -70,8 +71,6 @@ public class EspaciosFisicosRestController {
             @RequestParam String dia,
             @RequestParam LocalTime horaInicio,
             @RequestParam LocalTime horaFin) {
-        //LocalTime inicio = LocalTime.parse(horaInicio);
-        //LocalTime fin = LocalTime.parse(horaFin);
         boolean ocupado = objGestionarEspacioFisicoCUInt.estaOcupado(id, dia, horaInicio, horaFin);
         ResponseEntity<Boolean> objRespuesta = new ResponseEntity<Boolean>(ocupado, HttpStatus.OK);
         return objRespuesta;

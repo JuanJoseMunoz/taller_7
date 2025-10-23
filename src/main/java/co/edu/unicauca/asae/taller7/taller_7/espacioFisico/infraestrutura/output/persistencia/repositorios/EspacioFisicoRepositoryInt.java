@@ -12,7 +12,7 @@ public interface EspacioFisicoRepositoryInt extends JpaRepository<EspacioFisicoE
     List<EspacioFisicoEntity> findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(String nombre, Integer capacidadMinima);
     
     boolean existsByNombre(String nombre);
-
+    
     @Modifying
     @Query(value = "UPDATE espacios_fisicos SET estado = :estado WHERE id = :id", nativeQuery = true)
     int actualizarEstado(@Param("id") Integer id, @Param("estado") String estado);

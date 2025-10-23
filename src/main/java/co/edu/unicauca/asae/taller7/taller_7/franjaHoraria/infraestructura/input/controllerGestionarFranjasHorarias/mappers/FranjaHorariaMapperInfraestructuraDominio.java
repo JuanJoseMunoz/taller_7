@@ -17,6 +17,7 @@ public interface FranjaHorariaMapperInfraestructuraDominio {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "objCurso.idCurso", source = "idCurso")
     @Mapping(target = "objEspacioFisico.id", source = "idEspacioFisico")
+    @Mapping(target = "docentes", ignore = true)
     FranjaHoraria mappearDePeticionAFranjaHoraria(FranjaHorariaDTOPeticion peticion);
 
     @Mapping(source = "objEspacioFisico", target = "nombreEspacioFisico")

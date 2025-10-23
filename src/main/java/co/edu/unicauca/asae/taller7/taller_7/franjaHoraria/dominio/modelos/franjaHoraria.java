@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class FranjaHoraria {
-    private Integer id;
+    private Integer id; 
     private String dia;
-    private LocalTime horaInicio;
+    private LocalTime horaInicio; 
     private LocalTime horaFin;
     private EspacioFisico objEspacioFisico;
     private Curso objCurso;

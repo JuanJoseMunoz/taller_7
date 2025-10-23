@@ -8,9 +8,9 @@ public interface GestionarEspacioFisicoCUIntPort {
     
     EspacioFisico crear(EspacioFisico objEspacioFisico);
     
-    List<EspacioFisico> listar(String patron, Integer capacidadMinima);
+    List<EspacioFisico> listar(String nombre, Integer capacidadMinima);
      
-    Object actualizarEstado(Integer id, String estado);
+    EspacioFisico actualizarEstado(Integer id, String estado);
      
     boolean estaOcupado(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin);
         
