@@ -1,7 +1,9 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos;
 
 import java.time.LocalTime;
+import java.util.List;
 
+import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.EspacioFisico;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +17,7 @@ public class FranjaHoraria {
     private LocalTime horaFin;
     private EspacioFisico objEspacioFisico;
     private Curso objCurso;
+    private List<Docente> docentes;
 
     public FranjaHoraria() {
     }

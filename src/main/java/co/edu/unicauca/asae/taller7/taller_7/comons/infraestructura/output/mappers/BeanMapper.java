@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class BeanMapper {
     @Bean
     public ModelMapper crearBeanMapper() {
-        return new ModelMapper();
+        ModelMapper mapper = new ModelMapper();
+        mapper.getConfiguration().setMatchingStrategy(org.modelmapper.convention.MatchingStrategies.LOOSE);
+        return mapper;
     }
 }

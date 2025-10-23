@@ -30,7 +30,7 @@ public class FranjaHorariaEntity {
     private String dia;
 
     @Column(nullable = false)
-    private LocalTime horaInicio;
+    private LocalTime horaInicio; 
 
     @Column(nullable = false)
     private LocalTime horaFin;
@@ -42,6 +42,8 @@ public class FranjaHorariaEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "curso_id", nullable = false)
     private CursoEntity objCurso;
+
+    //private List<DocenteEntity> docentes;
 
     public FranjaHorariaEntity() {
     }

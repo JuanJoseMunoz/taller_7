@@ -19,4 +19,9 @@ public class Oficina {
     public boolean ubicacionValida() {
         return ubicacion != null && !ubicacion.trim().isEmpty() && ubicacion.length() <= 100;
     }
+
+    public void agregarDocente(Docente objDocente) {
+        // Método para mantener consistencia con el taller anterior
+        objDocente.setOficina(this);
+    }
 }

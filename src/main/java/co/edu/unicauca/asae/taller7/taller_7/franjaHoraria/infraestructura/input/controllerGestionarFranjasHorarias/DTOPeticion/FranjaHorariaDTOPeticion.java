@@ -1,6 +1,7 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTOPeticion;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,4 +28,7 @@ public class FranjaHorariaDTOPeticion {
 
     @NotNull(message = "{franja.curso.notnull}")
     private Integer idCurso;
+
+    @NotNull(message = "{franja.docente.notnull}")
+    private List<Integer> docentesIds;
 }

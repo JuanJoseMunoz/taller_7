@@ -29,30 +29,15 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
         this.objCursoRepository = objCursoRepository;
         this.objEspacioFisicoRepository = objEspacioFisicoRepository;
         this.franjaHorariaModelMapper = franjaHorariaModelMapper;
-    }
+    } 
 
     @Override
     @Transactional
     public FranjaHoraria guardarFranjaHoraria(FranjaHoraria objFranjaHoraria) {
-        FranjaHorariaEntity objFranjaHorariaEntity = new FranjaHorariaEntity();
-        objFranjaHorariaEntity.setDia(objFranjaHoraria.getDia());
-        objFranjaHorariaEntity.setHoraInicio(objFranjaHoraria.getHoraInicio());
-        objFranjaHorariaEntity.setHoraFin(objFranjaHoraria.getHoraFin());
-
-        // Asociar curso y espacio físico por ID
-        if (objFranjaHoraria.getObjCurso() != null && objFranjaHoraria.getObjCurso().getIdCurso() != null) {
-            objCursoRepository.findById(objFranjaHoraria.getObjCurso().getIdCurso())
-                    .ifPresent(objFranjaHorariaEntity::setObjCurso);
-        }
-
-        if (objFranjaHoraria.getObjEspacioFisico() != null && objFranjaHoraria.getObjEspacioFisico().getId() != null) {
-            objEspacioFisicoRepository.findById(objFranjaHoraria.getObjEspacioFisico().getId())
-                    .ifPresent(objFranjaHorariaEntity::setObjEspacioFisico);
-        }
-
-        FranjaHorariaEntity objFranjaHorariaEntityRegistrada = this.objFranjaHorariaRepository
-                .save(objFranjaHorariaEntity);
-        return this.franjaHorariaModelMapper.map(objFranjaHorariaEntityRegistrada, FranjaHoraria.class);
+        FranjaHorariaEntity objFranjaHorariaEntity = this.franjaHorariaModelMapper.map(objFranjaHoraria, FranjaHorariaEntity.class);
+        FranjaHorariaEntity objFranjaHorariaEntityRegistrado = this.objFranjaHorariaRepository.save(objFranjaHorariaEntity);
+        FranjaHoraria objFranjaHorariaRespuesta = this.franjaHorariaModelMapper.map(objFranjaHorariaEntityRegistrado, FranjaHoraria.class);
+        return objFranjaHorariaRespuesta;
     }
 
     @Override

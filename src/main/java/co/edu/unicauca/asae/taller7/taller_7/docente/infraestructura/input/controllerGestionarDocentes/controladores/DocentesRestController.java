@@ -22,10 +22,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/docentes")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class DocentesRestController {
-
+ 
     private final GestionarDocenteCUIntPort objGestionarDocenteCUInt;
     private final DocenteMapperInfraestructuraDominio objMapeador;
 

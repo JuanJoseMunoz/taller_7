@@ -1,4 +1,4 @@
-package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.getway;
+package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.gateway;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -34,6 +34,11 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     @Override
     @Transactional
     public Docente guardarDocente(Docente objDocente) {
+        // Establecer relación bidireccional a nivel de dominio
+        if (objDocente.getOficina() != null) {
+            objDocente.getOficina().agregarDocente(objDocente);
+        }
+        
         DocenteEntity objDocenteEntity = docenteModelMapper.map(objDocente, DocenteEntity.class);
         DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
@@ -89,7 +94,6 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
 
     @Override
     public boolean existeDocentePorCorreo(String correo) {
-        // TODO Auto-generated method stub
-        return false;
+        return objDocenteRepository.existsByCorreo(correo);
     }
 }

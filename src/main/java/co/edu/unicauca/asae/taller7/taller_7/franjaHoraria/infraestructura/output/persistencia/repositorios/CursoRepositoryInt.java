@@ -12,6 +12,6 @@ public interface CursoRepositoryInt extends JpaRepository<CursoEntity, Integer> 
 
     List<CursoEntity> findByObjAsignaturaNombre(String nombreAsignatura);
 
-    @Query("SELECT c, f, e FROM Curso c JOIN c.franjasHorarias f JOIN f.objEspacioFisico e WHERE c.idCurso = :id")
+    @Query("SELECT c, f, e FROM CursoEntity c JOIN c.franjasHorarias f JOIN f.objEspacioFisico e WHERE c.idCurso = :id")
     Iterable<Object[]> consultarByCurso(@Param("id") Integer id);;
 }

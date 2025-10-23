@@ -64,12 +64,13 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort {
             return null;
         }
 
-        if (this.objGestionarDocenteGateway.existeDocente(objDocente.getId())) {
+        if (this.objGestionarDocenteGateway.existeDocentePorCorreo(objDocente.getCorreo())) {
             this.objDocenteFormateadorResultados
-                    .retornarRespuestaErrorEntidadExiste("Error: ya existe un docente con ese id");
-        } else {
-            objDocenteCreado = this.objGestionarDocenteGateway.guardarDocente(objDocente);
+                    .retornarRespuestaErrorEntidadExiste("Error: ya existe un docente con ese correo");
+            return null;
         }
+        
+        objDocenteCreado = this.objGestionarDocenteGateway.guardarDocente(objDocente);
 
         return objDocenteCreado;
     }
