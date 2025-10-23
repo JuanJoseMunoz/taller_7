@@ -35,7 +35,7 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
     }
     
     @Override
-    public EspacioFisico crearEspacioFisico(EspacioFisico objEspacioFisico) {
+    public EspacioFisico crear(EspacioFisico objEspacioFisico) {
         EspacioFisico objEspacioFisicoCreado = null;
 
         if (!datosValidos(objEspacioFisico)) {
@@ -53,12 +53,12 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
     }
     
     @Override
-    public List<EspacioFisico> listarEspaciosFisicos(String patron, Integer capacidadMinima) {
+    public List<EspacioFisico> listar(String patron, Integer capacidadMinima) {
         return this.objGestionarEspacioFisicoGateway.listarEspaciosFisicos(patron, capacidadMinima);
     }
     
     @Override
-    public Object actualizarEstadoEspacioFisico(Integer id, String estado) {
+    public Object actualizarEstado(Integer id, String estado) {
         if (!this.objGestionarEspacioFisicoGateway.existeEspacioFisico(id)) {
             this.objEspacioFisicoFormateadorResultados.retornarRespuestaErrorEntidadNoExiste("Error: no existe un espacio físico con id " + id);
         }
@@ -66,12 +66,12 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
         return espacioActualizado;
     }
     @Override
-    public EspacioFisico buscarEspacioFisicoPorId(Integer id) {
+    public EspacioFisico buscarById(Integer id) {
         return this.objGestionarEspacioFisicoGateway.buscarEspacioFisicoPorId(id);
     }
 
     @Override
-    public boolean estaOcupadoEspacioFisico(Integer idEspacioFisico, String dia, LocalTime horaInicio,
+    public boolean estaOcupado(Integer idEspacioFisico, String dia, LocalTime horaInicio,
             LocalTime horaFin) {
         // TODO Auto-generated method stub
         return false;

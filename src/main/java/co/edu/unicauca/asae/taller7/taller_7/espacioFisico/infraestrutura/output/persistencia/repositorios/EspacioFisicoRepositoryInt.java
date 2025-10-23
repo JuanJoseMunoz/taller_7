@@ -10,6 +10,8 @@ import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output
 public interface EspacioFisicoRepositoryInt extends JpaRepository<EspacioFisicoEntity, Integer> {
     
     List<EspacioFisicoEntity> findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(String nombre, Integer capacidadMinima);
+    
+    boolean existsByNombre(String nombre);
 
     @Modifying
     @Query(value = "UPDATE espacios_fisicos SET estado = :estado WHERE id = :id", nativeQuery = true)

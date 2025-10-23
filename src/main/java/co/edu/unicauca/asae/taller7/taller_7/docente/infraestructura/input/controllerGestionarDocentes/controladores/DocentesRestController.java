@@ -30,7 +30,7 @@ public class DocentesRestController {
     private final DocenteMapperInfraestructuraDominio objMapeador;
 
     @PostMapping("/docentes")
-    public ResponseEntity<DocenteDTORespuesta> create(@RequestBody @Valid DocenteDTOPeticion objDocente) {
+    public ResponseEntity<DocenteDTORespuesta> crear(@RequestBody @Valid DocenteDTOPeticion objDocente) {
         Docente docenteCrear = objMapeador.mappearDePeticionADocente(objDocente);
         Docente docenteCreado = objGestionarDocenteCUInt.crearDocente(docenteCrear);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
@@ -46,7 +46,7 @@ public class DocentesRestController {
     }
 
     @GetMapping("/docentes/{id}")
-    public ResponseEntity<DocenteDTORespuesta> buscarPorId(@PathVariable Integer id) {
+    public ResponseEntity<DocenteDTORespuesta> buscarById(@PathVariable Integer id) {
         Docente docente = objGestionarDocenteCUInt.buscarDocentePorId(id);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
                 objMapeador.mappearDeDocenteARespuesta(docente),
@@ -55,13 +55,10 @@ public class DocentesRestController {
     }
 
     @PutMapping("/docentes/{id}")
-    public ResponseEntity<DocenteDTORespuesta> actualizar(@PathVariable Integer id,
-            @RequestBody @Valid DocenteDTOPeticion peticion) {
+    public ResponseEntity<DocenteDTORespuesta> actualizar(@PathVariable Integer id, @RequestBody @Valid DocenteDTOPeticion peticion) {
         Docente docenteActualizar = objMapeador.mappearDePeticionADocente(peticion);
-
         docenteActualizar.setId(id);
         Docente docenteActualizado = objGestionarDocenteCUInt.actualizarDocente(docenteActualizar);
-
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
                 objMapeador.mappearDeDocenteARespuesta(docenteActualizado),
                 HttpStatus.OK);

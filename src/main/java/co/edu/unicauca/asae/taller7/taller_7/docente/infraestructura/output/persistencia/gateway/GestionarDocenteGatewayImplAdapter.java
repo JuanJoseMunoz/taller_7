@@ -70,6 +70,14 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
         if (objDocente.getId() == null || !objDocenteRepository.existsById(objDocente.getId())) {
             return null;
         }
+        
+        // Obtener el docente existente para preservar el ID de la oficina
+        Optional<DocenteEntity> docenteExistente = objDocenteRepository.findById(objDocente.getId());
+        if (docenteExistente.isPresent() && docenteExistente.get().getObjOficina() != null && objDocente.getOficina() != null) {
+            // Preservar el ID de la oficina para actualizar en lugar de crear nueva
+            objDocente.getOficina().setId(docenteExistente.get().getObjOficina().getId());
+        }
+        
         return guardarDocente(objDocente);
     }
 

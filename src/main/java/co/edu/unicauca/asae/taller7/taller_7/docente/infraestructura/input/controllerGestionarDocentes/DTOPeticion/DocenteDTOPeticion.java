@@ -1,8 +1,6 @@
 package co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.controllerGestionarDocentes.DTOPeticion;
 
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Oficina;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

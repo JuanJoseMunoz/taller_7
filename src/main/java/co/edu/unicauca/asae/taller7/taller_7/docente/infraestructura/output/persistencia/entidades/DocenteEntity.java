@@ -23,7 +23,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "docentes")
 public class DocenteEntity extends PersonaEntity {
-    @ManyToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+    @ManyToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "oficina_id", nullable = true)
     private OficinaEntity objOficina;
 

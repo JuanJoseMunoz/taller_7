@@ -6,13 +6,13 @@ import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.Espac
 
 public interface GestionarEspacioFisicoCUIntPort {
     
-    EspacioFisico crearEspacioFisico(EspacioFisico objEspacioFisico);
+    EspacioFisico crear(EspacioFisico objEspacioFisico);
     
-    List<EspacioFisico> listarEspaciosFisicos(String patron, Integer capacidadMinima);
+    List<EspacioFisico> listar(String patron, Integer capacidadMinima);
      
-    Object actualizarEstadoEspacioFisico(Integer id, String estado);
+    Object actualizarEstado(Integer id, String estado);
      
-    boolean estaOcupadoEspacioFisico(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin);
+    boolean estaOcupado(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin);
         
-    EspacioFisico buscarEspacioFisicoPorId(Integer id);
+    EspacioFisico buscarById(Integer id);
 }
