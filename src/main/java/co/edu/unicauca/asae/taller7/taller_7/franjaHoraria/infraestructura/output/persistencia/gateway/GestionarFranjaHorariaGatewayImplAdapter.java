@@ -27,14 +27,17 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
         this.objFranjaHorariaRepository = objFranjaHorariaRepository;
         this.objCursoRepository = objCursoRepository;
         this.franjaHorariaModelMapper = franjaHorariaModelMapper;
-    } 
+    }
 
     @Override
     @Transactional
     public FranjaHoraria guardarFranjaHoraria(FranjaHoraria objFranjaHoraria) {
-        FranjaHorariaEntity objFranjaHorariaEntity = this.franjaHorariaModelMapper.map(objFranjaHoraria, FranjaHorariaEntity.class);
-        FranjaHorariaEntity objFranjaHorariaEntityRegistrado = this.objFranjaHorariaRepository.save(objFranjaHorariaEntity);
-        FranjaHoraria objFranjaHorariaRespuesta = this.franjaHorariaModelMapper.map(objFranjaHorariaEntityRegistrado, FranjaHoraria.class);
+        FranjaHorariaEntity objFranjaHorariaEntity = this.franjaHorariaModelMapper.map(objFranjaHoraria,
+                FranjaHorariaEntity.class);
+        FranjaHorariaEntity objFranjaHorariaEntityRegistrado = this.objFranjaHorariaRepository
+                .save(objFranjaHorariaEntity);
+        FranjaHoraria objFranjaHorariaRespuesta = this.franjaHorariaModelMapper.map(objFranjaHorariaEntityRegistrado,
+                FranjaHoraria.class);
         return objFranjaHorariaRespuesta;
     }
 
