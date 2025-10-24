@@ -27,7 +27,7 @@ public class DocenteEntity extends PersonaEntity {
     @JoinColumn(name = "oficina_id", nullable = true)
     private OficinaEntity objOficina;
 
-    @ManyToMany(mappedBy = "listaDocentes", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "listaDocentes", fetch = FetchType.LAZY)
     private List<CursoEntity> listaCursos = new ArrayList<>();
 
     public DocenteEntity() {

@@ -23,7 +23,7 @@ import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/franjasHorarias")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class FranjasHorariasRestController {
     private final GestionarFranjaHorariaCUIntPort objGestionarFranjaHorariaCUInt;

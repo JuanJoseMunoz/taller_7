@@ -43,8 +43,6 @@ public class FranjaHorariaEntity {
     @JoinColumn(name = "curso_id", nullable = false)
     private CursoEntity objCurso;
 
-    //private List<DocenteEntity> docentes;
-
     public FranjaHorariaEntity() {
     }
 }
