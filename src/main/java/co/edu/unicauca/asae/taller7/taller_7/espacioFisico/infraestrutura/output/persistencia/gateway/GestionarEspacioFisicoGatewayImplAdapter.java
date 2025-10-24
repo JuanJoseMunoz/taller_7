@@ -49,7 +49,6 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
     public EspacioFisico actualizarEstadoEspacioFisico(Integer id, String estado) {
         int bandera = this.objEspacioFisicoRepository.actualizarEstado(id, estado);
         if (bandera > 0) {
-            this.objEspacioFisicoRepository.flush();
             Optional<EspacioFisicoEntity> espacioFisicoEntity = this.objEspacioFisicoRepository.findById(id);
             if (espacioFisicoEntity.isPresent()) {
                 EspacioFisicoEntity objEspacioFisicoEntityActualizado = espacioFisicoEntity.get();

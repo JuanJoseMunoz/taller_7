@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.aplicacion.input;
 
-import java.time.LocalTime;
 import java.util.List;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.modelos.EspacioFisico;
 
@@ -11,8 +10,6 @@ public interface GestionarEspacioFisicoCUIntPort {
     List<EspacioFisico> listar(String nombre, Integer capacidadMinima);
      
     EspacioFisico actualizarEstado(Integer id, String estado);
-     
-    boolean estaOcupado(Integer idEspacioFisico, String dia, LocalTime horaInicio, LocalTime horaFin);
-        
+             
     EspacioFisico buscarById(Integer id);
 }

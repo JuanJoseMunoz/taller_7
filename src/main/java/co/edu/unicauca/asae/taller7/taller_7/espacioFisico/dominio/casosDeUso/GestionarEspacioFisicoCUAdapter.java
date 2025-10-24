@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.dominio.casosDeUso;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import co.edu.unicauca.asae.taller7.taller_7.comons.aplicacion.output.FormateadorResultadosIntPort;
@@ -75,10 +74,4 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
         return espacioEncontrado;
     }
 
-    @Override
-    public boolean estaOcupado(Integer idEspacioFisico, String dia, LocalTime horaInicio,
-            LocalTime horaFin) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }

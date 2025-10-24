@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.input.controllerGestionarEspaciosFisicos.controladores;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -66,13 +65,4 @@ public class EspaciosFisicosRestController {
         return objRespuesta;
     }
 
-    @GetMapping("/espaciosFisicos/{id}/ocupado")
-    public ResponseEntity<Boolean> estaOcupado(@PathVariable Integer id,
-            @RequestParam String dia,
-            @RequestParam LocalTime horaInicio,
-            @RequestParam LocalTime horaFin) {
-        boolean ocupado = objGestionarEspacioFisicoCUInt.estaOcupado(id, dia, horaInicio, horaFin);
-        ResponseEntity<Boolean> objRespuesta = new ResponseEntity<Boolean>(ocupado, HttpStatus.OK);
-        return objRespuesta;
-    }
 }

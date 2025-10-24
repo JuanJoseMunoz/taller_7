@@ -13,7 +13,7 @@ public interface EspacioFisicoRepositoryInt extends JpaRepository<EspacioFisicoE
     
     boolean existsByNombre(String nombre);
     
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value = "UPDATE espacios_fisicos SET estado = :estado WHERE id = :id", nativeQuery = true)
     int actualizarEstado(@Param("id") Integer id, @Param("estado") String estado);
     
