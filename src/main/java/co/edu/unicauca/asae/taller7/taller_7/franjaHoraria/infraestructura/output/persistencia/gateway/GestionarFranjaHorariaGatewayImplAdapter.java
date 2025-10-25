@@ -36,6 +36,7 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
                 FranjaHorariaEntity.class);
         FranjaHorariaEntity objFranjaHorariaEntityRegistrado = this.objFranjaHorariaRepository
                 .save(objFranjaHorariaEntity);
+        this.objFranjaHorariaRepository.flush(); // Forzar escritura a BD
         FranjaHoraria objFranjaHorariaRespuesta = this.franjaHorariaModelMapper.map(objFranjaHorariaEntityRegistrado,
                 FranjaHoraria.class);
         return objFranjaHorariaRespuesta;
@@ -43,7 +44,7 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
 
     @Override
     public List<FranjaHoraria> listarFranjasPorCurso(Integer idCurso) {
-        List<FranjaHorariaEntity> lista = this.objFranjaHorariaRepository.findByObjCursoIdCurso(idCurso);
+        Iterable<Object[]> lista = this.objFranjaHorariaRepository.consultarByCurso(idCurso);
         List<FranjaHoraria> listaFranjas = this.franjaHorariaModelMapper.map(lista,
                 new TypeToken<List<FranjaHoraria>>() {
                 }.getType());

@@ -9,7 +9,7 @@ import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.contr
 
 
 @Service
-public class EspacioFisicoFormateadorResultadosImplAdapter implements FormateadorResultadosIntPort {
+public class FormateadorResultadosImplAdapter implements FormateadorResultadosIntPort {
     
     @Override
     public void retornarRespuestaErrorEntidadExiste(String mensaje) {

@@ -22,7 +22,11 @@ public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaE
                                    @Param("horaInicio") LocalTime horaInicio, 
                                    @Param("horaFin") LocalTime horaFin);
 
-    @Query(value = "SELECT COUNT(*) FROM docentes d JOIN cursosdocente cd ON d.IdDocente = cd.idDocente JOIN cursos c ON cd.idCurso = c.idCurso JOIN franjas_horarias f ON c.idCurso = f.curso_id WHERE d.IdDocente = :id AND f.dia = :dia AND f.hora_inicio < :horaFin AND f.hora_fin > :horaInicio", nativeQuery = true)
+    @Query("SELECT CASE WHEN COUNT(f) > 0 THEN 1 ELSE 0 END FROM FranjaHorariaEntity f " +
+           "JOIN f.objCurso c " +
+           "JOIN c.listaDocentes d " +
+           "WHERE d.id = :id AND f.dia = :dia " +
+           "AND f.horaInicio < :horaFin AND f.horaFin > :horaInicio")
     int isDocenteOcupado(@Param("id") Integer id, @Param("dia") String dia, @Param("horaInicio") LocalTime horaInicio, @Param("horaFin") LocalTime horaFin);
 
     @Query("SELECT c, f, e FROM CursoEntity c JOIN c.franjasHorarias f JOIN f.objEspacioFisico e WHERE c.idCurso = :id")

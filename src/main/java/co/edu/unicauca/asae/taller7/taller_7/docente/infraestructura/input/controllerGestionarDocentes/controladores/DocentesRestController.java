@@ -18,6 +18,7 @@ import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.controllerGestionarDocentes.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.controllerGestionarDocentes.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.controllerGestionarDocentes.mappers.DocenteMapperInfraestructuraDominio;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.validacionesCadena.Orquestadorvalidaciones;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -28,9 +29,11 @@ public class DocentesRestController {
  
     private final GestionarDocenteCUIntPort objGestionarDocenteCUInt;
     private final DocenteMapperInfraestructuraDominio objMapeador;
+    private final Orquestadorvalidaciones orquestadorValidaciones;
 
     @PostMapping("/docentes")
     public ResponseEntity<DocenteDTORespuesta> crear(@RequestBody @Valid DocenteDTOPeticion objDocente) {
+        orquestadorValidaciones.ejecutarValidacionesDocente(objDocente);
         Docente docenteCrear = objMapeador.mappearDePeticionADocente(objDocente);
         Docente docenteCreado = objGestionarDocenteCUInt.crearDocente(docenteCrear);
         ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(

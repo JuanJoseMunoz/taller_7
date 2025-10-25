@@ -36,7 +36,7 @@ public class GestionarEspacioFisicoGatewayImplAdapter implements GestionarEspaci
         Iterable<EspacioFisicoEntity> listaEspaciosFisicosEntity = this.objEspacioFisicoRepository.findByNombreStartingWithIgnoreCaseAndCapacidadGreaterThanEqualOrderByNombreAsc(nombre, capacidadMinima);
         List<EspacioFisico> listaEspaciosFisicos = this.espacioFisicoModelMapper.map(listaEspaciosFisicosEntity, new TypeToken<List<EspacioFisico>>() {
         }.getType());
-        return listaEspaciosFisicos;
+        return listaEspaciosFisicos; 
     }
     
     @Override

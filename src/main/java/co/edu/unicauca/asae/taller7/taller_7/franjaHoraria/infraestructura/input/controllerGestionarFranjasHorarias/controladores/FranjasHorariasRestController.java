@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.input.GestionarFranjaHorariaCUIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.FranjaHoraria;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.validacionesCadena.Orquestadorvalidaciones;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTOPeticion.FranjaHorariaDTOPeticion;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDTORespuesta;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDeCursoDTORespuesta;
@@ -28,10 +29,12 @@ import lombok.RequiredArgsConstructor;
 public class FranjasHorariasRestController {
     private final GestionarFranjaHorariaCUIntPort objGestionarFranjaHorariaCUInt;
     private final FranjaHorariaMapperInfraestructuraDominio objMapeador;
+    private final Orquestadorvalidaciones  objOrquestadorValidaciones;
 
     @PostMapping("/franjasHorarias")
     public ResponseEntity<FranjaHorariaDTORespuesta> crearFranjaHoraria(
             @Valid @RequestBody FranjaHorariaDTOPeticion objFranjaHoraria) {
+        objOrquestadorValidaciones.ejecutarValidacionesFranjaHoraria(objFranjaHoraria);
         FranjaHoraria objFranjaHorariaCrear = objMapeador.mappearDePeticionAFranjaHoraria(objFranjaHoraria);
         FranjaHoraria objFranjaHorariaCreada = objGestionarFranjaHorariaCUInt.crearFranjaHoraria(objFranjaHorariaCrear);
         ResponseEntity<FranjaHorariaDTORespuesta> objRespuesta = new ResponseEntity<FranjaHorariaDTORespuesta>(
