@@ -2,16 +2,17 @@ package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.inpu
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import java.time.LocalTime;
+import java.util.regex.Pattern;
 
-public class FormatoHoraMilitarValidator implements ConstraintValidator<FormatoHoraMilitar, LocalTime> {
+public class FormatoHoraMilitarValidator implements ConstraintValidator<FormatoHoraMilitar, String> {
+
+    private static final Pattern FORMATO_MILITAR = Pattern.compile("^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$");
 
     @Override
-    public boolean isValid(LocalTime value, ConstraintValidatorContext context) {
-        if (value == null) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        if (value == null || value.trim().isEmpty()) {
             return false;
         }
-        return !value.isBefore(LocalTime.MIDNIGHT) &&
-               !value.isAfter(LocalTime.of(23, 59));
+        return FORMATO_MILITAR.matcher(value.trim()).matches();
     }
 }

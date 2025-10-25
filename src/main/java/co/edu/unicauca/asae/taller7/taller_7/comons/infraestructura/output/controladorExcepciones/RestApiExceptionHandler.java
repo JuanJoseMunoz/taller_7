@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones;
 
+import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
 import org.springframework.http.HttpStatus;
@@ -64,6 +65,16 @@ public class RestApiExceptionHandler {
                 CodigoError codigoError = defaultMessage.contains("capacidad") ? 
                         CodigoError.CAPACIDAD_INSUFICIENTE : CodigoError.VALIDACION_FALLIDA;
                 Error error = ErrorUtils.crearError(codigoError.getCodigo(), defaultMessage,
+                                HttpStatus.BAD_REQUEST.value())
+                                .setUrl(req.getRequestURL().toString()).setMetodo(req.getMethod());
+                return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        }
+
+        @ExceptionHandler(DateTimeParseException.class)
+        public ResponseEntity<Error> handleDateTimeParseException(final HttpServletRequest req,
+                        DateTimeParseException ex, Locale locale) {
+                Error error = ErrorUtils.crearError(CodigoError.VALIDACION_FALLIDA.getCodigo(),
+                                "Formato de hora inválido. Use formato HH:mm (00:00 a 23:59)",
                                 HttpStatus.BAD_REQUEST.value())
                                 .setUrl(req.getRequestURL().toString()).setMetodo(req.getMethod());
                 return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);

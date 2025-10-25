@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.mappers;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,8 +26,8 @@ public class FranjaHorariaMapperInfraestructuraDominio {
     public FranjaHoraria mappearDePeticionAFranjaHoraria(FranjaHorariaDTOPeticion franja) {
         FranjaHoraria franjaHoraria = new FranjaHoraria();
         franjaHoraria.setDia(String.valueOf(franja.getDia()));
-        franjaHoraria.setHoraInicio(franja.getHoraInicio());
-        franjaHoraria.setHoraFin(franja.getHoraFin());
+        franjaHoraria.setHoraInicio(LocalTime.parse(franja.getHoraInicio()));
+        franjaHoraria.setHoraFin(LocalTime.parse(franja.getHoraFin()));
 
         Curso curso = new Curso();
         curso.setId(franja.getIdCurso());

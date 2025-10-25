@@ -15,14 +15,13 @@ public class EspacioFisicoDTOPeticion {
     
     @NotNull(message = "{espacioFisico.nombre.notNull}")
     @NotEmpty(message = "{espacioFisico.nombre.notEmpty}")
-    @Size(max = 255, message = "{espacioFisico.nombre.size}")
+    @Size(max = 255, message = "{espacioFisico.nombre.min}")
     private String nombre;
     
     @Min(value = 1, message = "{espacioFisico.capacidad.min}")
     private int capacidad;
     
     @NotNull(message = "{espacioFisico.estado.notNull}")
-    @NotEmpty(message = "{espacioFisico.estado.notEmpty}")
     @Size(max = 8, message = "{espacioFisico.estado.size}")
     private String estado;
     

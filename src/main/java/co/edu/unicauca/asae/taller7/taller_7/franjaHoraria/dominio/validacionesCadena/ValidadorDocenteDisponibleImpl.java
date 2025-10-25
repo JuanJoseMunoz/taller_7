@@ -1,8 +1,8 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.validacionesCadena;
 
+import java.time.LocalTime;
 import java.util.Set;
 
-import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.formateador.FormateadorResultadosImplAdapter;
 import co.edu.unicauca.asae.taller7.taller_7.docente.dominio.modelos.Docente;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output.ValidacionesGatewayIntPort;
@@ -35,7 +35,7 @@ public class ValidadorDocenteDisponibleImpl extends ManejadorValidadorFranjaHora
                 formateador.retornarRespuestaErrorEntidadNoExiste("No existe el docente con id: " + docente.getId()); 
             }
 
-            int bandera = validacionesGateway.isDocenteOcupado(docente.getId(), franjaHoraria.getDia(), franjaHoraria.getHoraInicio(), franjaHoraria.getHoraFin());
+            int bandera = validacionesGateway.isDocenteOcupado(docente.getId(), franjaHoraria.getDia(), LocalTime.parse(franjaHoraria.getHoraInicio()) , LocalTime.parse(franjaHoraria.getHoraFin()));
 
             if (bandera == 1) {
                 String mensaje = String.format("El docente no esta disponible en la franja horaria");
