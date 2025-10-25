@@ -3,6 +3,7 @@ package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.configuraci
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.formateador.FormateadorResultadosImplAdapter;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.output.persistencia.repositories.DocenteRepositoryInt;
 import co.edu.unicauca.asae.taller7.taller_7.espacioFisico.infraestrutura.output.persistencia.repositorios.EspacioFisicoRepositoryInt;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output.ValidacionesGatewayIntPort;
@@ -24,7 +25,8 @@ public class BeanValidacionesConfigurations {
     }
     
     @Bean
-    public Orquestadorvalidaciones crearOrquestadorValidaciones(ValidacionesGatewayIntPort validacionesGateway) {
-        return new Orquestadorvalidaciones(validacionesGateway);
+    public Orquestadorvalidaciones crearOrquestadorValidaciones(ValidacionesGatewayIntPort validacionesGateway, 
+                                                                FormateadorResultadosImplAdapter formateador) {
+        return new Orquestadorvalidaciones(validacionesGateway, formateador);
     }
 }

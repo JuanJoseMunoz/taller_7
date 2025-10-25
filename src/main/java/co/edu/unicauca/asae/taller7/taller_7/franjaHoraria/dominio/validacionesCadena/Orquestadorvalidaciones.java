@@ -1,5 +1,8 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.validacionesCadena;
 
+import java.text.Format;
+
+import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.formateador.FormateadorResultadosImplAdapter;
 import co.edu.unicauca.asae.taller7.taller_7.docente.infraestructura.input.controllerGestionarDocentes.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output.ValidacionesGatewayIntPort;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTOPeticion.FranjaHorariaDTOPeticion;
@@ -7,21 +10,23 @@ import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input
 public class Orquestadorvalidaciones {
     
     private ValidacionesGatewayIntPort validacionesGateway;
+    private FormateadorResultadosImplAdapter formateador;
     private ManejadorValidadorFranjaHoraria validadorFranjaHoraria;
     private ManejadorValidadorDocente validadorDocente;
 
-    public Orquestadorvalidaciones(ValidacionesGatewayIntPort validacionesGateway) {
+    public Orquestadorvalidaciones(ValidacionesGatewayIntPort validacionesGateway, FormateadorResultadosImplAdapter formateador) {
         this.validacionesGateway = validacionesGateway;
-        ManejadorValidadorFranjaHoraria v1 = new ValidadorExistenciaEntidadesImpl(validacionesGateway);
-        ManejadorValidadorFranjaHoraria v2 = new ValidadorEspacioDisponibleImpl(validacionesGateway);
-        ManejadorValidadorFranjaHoraria v3 = new ValidadorDocenteDisponibleImpl(validacionesGateway);
+        this.formateador = formateador;
+        ManejadorValidadorFranjaHoraria v1 = new ValidadorExistenciaEntidadesImpl(validacionesGateway, formateador);
+        ManejadorValidadorFranjaHoraria v2 = new ValidadorEspacioDisponibleImpl(validacionesGateway, formateador);
+        ManejadorValidadorFranjaHoraria v3 = new ValidadorDocenteDisponibleImpl(validacionesGateway, formateador);
         
         v1.setNext(v2);
         v2.setNext(v3);
 
         validadorFranjaHoraria = v1;
         
-        ManejadorValidadorDocente vd1 = new ValidadorCorreoDocente(validacionesGateway);
+        ManejadorValidadorDocente vd1 = new ValidadorCorreoDocente(validacionesGateway, formateador);
         validadorDocente = vd1;
     }
     

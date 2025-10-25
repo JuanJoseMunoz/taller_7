@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public abstract class GestionClientesRuntimeException extends RuntimeException {
+public abstract class GestionFranjasHorariasRuntimeException extends RuntimeException {
     protected CodigoError codigoError;
 
     public abstract String formatException();

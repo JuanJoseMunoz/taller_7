@@ -2,7 +2,7 @@ package co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.cont
 
 import co.edu.unicauca.asae.taller7.taller_7.comons.infraestructura.output.controladorExcepciones.estructuraExcepciones.CodigoError;
 
-public class ReglaNegocioExcepcion extends GestionClientesRuntimeException {
+public class ReglaNegocioExcepcion extends GestionFranjasHorariasRuntimeException {
     private static final String FORMATO_EXCEPCION = "%s - Violación a regla de negocio: %s";
 
     private final String reglaNegocio;

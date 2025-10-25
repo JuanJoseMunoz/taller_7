@@ -14,24 +14,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@CapacidadSuficiente(message = "{franja.capacidadInsuficiente}")
+@CapacidadSuficiente(message = "{franjaHoraria.capacidadInsuficiente}")
 public class FranjaHorariaDTOPeticion {
-    @NotNull(message = "{franja.horaInicio.notnull}")
-    @Size(max = 20, message = "{franja.dia.size}")
+    @NotNull(message = "{franjaHoraria.dia.notnull}")
+    @Size(max = 20, message = "{franjaHoraria.dia.size}")
     private String dia;
 
-    @NotNull(message = "{franja.horaInicio.notnull}")
-    @FormatoHoraMilitar(message = "{franja.horaInicio.formatoMilitar}")
+    @NotNull(message = "{franjaHoraria.horaInicio.notnull}")
+    @FormatoHoraMilitar(message = "{franjaHoraria.horaInicio.formatoMilitar}")
     private LocalTime horaInicio;
 
-    @NotNull(message = "{franja.horaFin.notnull}")
-    @FormatoHoraMilitar(message = "{franja.horaFin.formatoMilitar}")
+    @NotNull(message = "{franjaHoraria.horaFin.notnull}")
+    @FormatoHoraMilitar(message = "{franjaHoraria.horaFin.formatoMilitar}")
     private LocalTime horaFin; 
 
-    @NotNull(message = "{franja.idEspacioFisico.notnull}")
+    @NotNull(message = "{franjaHoraria.idEspacioFisico.notnull}")
+    @Min(value = 1, message = "{franjaHoraria.idEspacioFisico.min}")
     private Integer idEspacioFisico;
 
-    @NotNull(message = "{franja.curso.notnull}")
-    @Min(value = 1, message = "{franja.idCurso.min}")
+    @NotNull(message = "{franjaHoraria.curso.notnull}")
+    @Min(value = 1, message = "{franjaHoraria.idCurso.min}")
     private Integer idCurso;
 }
