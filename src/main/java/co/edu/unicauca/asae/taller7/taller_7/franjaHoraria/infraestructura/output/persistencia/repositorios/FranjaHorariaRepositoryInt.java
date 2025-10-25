@@ -22,7 +22,7 @@ public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaE
                      @Param("horaInicio") LocalTime horaInicio,
                      @Param("horaFin") LocalTime horaFin);
 
-       @Query(value = "SELECT COUNT(*) FROM docentes d JOIN cursosdocente cd ON d.IdDocente = cd.idDocente JOIN cursos c ON cd.idCurso = c.idCurso JOIN franjas_horarias f ON c.idCurso = f.curso_id WHERE d.IdDocente = :id AND f.dia = :dia AND f.hora_inicio < :horaFin AND f.hora_fin > :horaInicio", nativeQuery = true)
+       @Query(value = "SELECT COUNT(*) FROM docentes d JOIN cursosdocente cd ON d.persona_id = cd.idDocente JOIN cursos c ON cd.idCurso = c.idCurso JOIN franjas_horarias f ON c.idCurso = f.curso_id WHERE d.persona_id = :id AND f.dia = :dia AND f.horaInicio < :horaFin AND f.horaFin > :horaInicio", nativeQuery = true)
        int isDocenteOcupado(@Param("id") Integer id, @Param("dia") String dia,
                      @Param("horaInicio") LocalTime horaInicio, @Param("horaFin") LocalTime horaFin);
 
@@ -33,9 +33,10 @@ public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaE
        @Query(value = "DELETE FROM franjas_horarias WHERE curso_id = :id", nativeQuery = true)
        public int eliminarFranjasByCurso(@Param("id") Integer id);
 
-       @Query("SELECT f FROM FranjaHorariaEntity f " +
-                     "JOIN f.objCurso c " +
-                     "JOIN c.listaDocentes d " +
-                     "WHERE d.id  = :idDocente")
+       @Query("""
+              SELECT f FROM FranjaHorariaEntity f
+              JOIN f.objCurso c
+              JOIN c.listaDocentes d
+              WHERE d.id = :idDocente """)
        List<FranjaHorariaEntity> findByDocenteId(@Param("idDocente") Integer idDocente);
 }

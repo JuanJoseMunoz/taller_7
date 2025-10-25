@@ -65,7 +65,7 @@ public class FranjasHorariasRestController {
         return new ResponseEntity<>(detalle, HttpStatus.OK);
     }
 
-    @DeleteMapping("/curso/{cursoId}")
+    @DeleteMapping("/franjasHorarias/curso/{cursoId}")
     public ResponseEntity<String> eliminarFranjasPorCurso(@PathVariable @Min(value = 1, message = "{franjaHoraria.cursoId.min}") int cursoId) {
         int eliminadas = objGestionarFranjaHorariaCUInt.eliminarFranjasPorCurso(cursoId);
         String mensaje = String.format("Se eliminaron %d franja(s) horaria(s) del curso", eliminadas);
