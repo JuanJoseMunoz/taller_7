@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,5 +63,12 @@ public class FranjasHorariasRestController {
     public ResponseEntity<List<Object[]>> obtenerDetalleFranjasCurso(@PathVariable @Min(value = 1, message = "{franjaHoraria.cursoId.min}") int cursoId) {
         List<Object[]> detalle = objGestionarFranjaHorariaCUInt.obtenerDetalleFranjasCurso(cursoId);
         return new ResponseEntity<>(detalle, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/curso/{cursoId}")
+    public ResponseEntity<String> eliminarFranjasPorCurso(@PathVariable @Min(value = 1, message = "{franjaHoraria.cursoId.min}") int cursoId) {
+        int eliminadas = objGestionarFranjaHorariaCUInt.eliminarFranjasPorCurso(cursoId);
+        String mensaje = String.format("Se eliminaron %d franja(s) horaria(s) del curso", eliminadas);
+        return new ResponseEntity<>(mensaje, HttpStatus.OK);
     }
 }
