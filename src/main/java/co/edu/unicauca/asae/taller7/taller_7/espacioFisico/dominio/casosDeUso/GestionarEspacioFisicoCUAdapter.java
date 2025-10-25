@@ -23,7 +23,7 @@ public class GestionarEspacioFisicoCUAdapter implements GestionarEspacioFisicoCU
             return false;
         }
 
-        if (!objEspacioFisico.tieneNombreValido() || !objEspacioFisico.tieneCapacidadValida() || !objEspacioFisico.tieneEstadoValido()) {
+        if (!objEspacioFisico.tieneNombreValido() || !objEspacioFisico.tieneCapacidadValida()) {
             this.objEspacioFisicoFormateadorResultados
                     .retornarRespuestaErrorReglaDeNegocio(
                             "Error: datos básicos inválidos para el espacio físico (nombre, capacidad o estado)");

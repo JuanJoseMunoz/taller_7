@@ -28,7 +28,4 @@ public class FranjaHorariaDTOPeticion {
 
     @NotNull(message = "{franja.curso.notnull}")
     private Integer idCurso;
-
-    @NotNull(message = "{franja.docente.notnull}")
-    private List<Integer> docentesIds;
 }

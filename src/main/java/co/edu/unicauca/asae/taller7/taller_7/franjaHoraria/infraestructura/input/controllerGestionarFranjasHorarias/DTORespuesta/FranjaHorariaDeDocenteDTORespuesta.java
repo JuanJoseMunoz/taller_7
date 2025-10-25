@@ -4,22 +4,18 @@ import java.time.LocalTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class FranjaHorariaDeDocenteDTORespuesta {
-    private Integer id;
+    private int id;
     private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    private String nombreEspacioFisico;
-    private Integer capacidadEspacioFisico;
-    private String nombreCurso;
-    private String nombreAsignatura;
-
-    public FranjaHorariaDeDocenteDTORespuesta() {
-
-    }
+    private CursoDTORespuesta curso;
+    private EspacioFisicoDTORespuesta espacioFisico;
 }

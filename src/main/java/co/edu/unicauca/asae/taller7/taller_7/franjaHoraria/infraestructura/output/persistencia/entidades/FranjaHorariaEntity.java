@@ -14,12 +14,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "franjas_horarias")
 public class FranjaHorariaEntity {
     @Id
@@ -42,7 +44,4 @@ public class FranjaHorariaEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "curso_id", nullable = false)
     private CursoEntity objCurso;
-
-    public FranjaHorariaEntity() {
-    }
 }

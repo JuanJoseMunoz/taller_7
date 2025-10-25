@@ -31,7 +31,7 @@ public class GestionarFranjaHorariaCUAdapter implements GestionarFranjaHorariaCU
 
     @Override
     public List<FranjaHoraria> listarFranjasPorDocente(Integer idDocente) {
-        return objGestionarFranjaHorariaGateway.listarFranjasPorDocente(idDocente);
+        return this.objGestionarFranjaHorariaGateway.listarFranjasPorDocente(idDocente);
     }
 
     @Override
