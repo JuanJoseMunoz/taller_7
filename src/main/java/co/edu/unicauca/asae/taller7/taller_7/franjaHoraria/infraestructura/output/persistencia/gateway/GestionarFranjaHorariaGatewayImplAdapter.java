@@ -156,5 +156,10 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
         return detalle;
     }
 
+    @Override
+    public List<Curso> listarCursosByAsignatura(String nombreAsignatura) {
+        return objCursoRepository.findByObjAsignaturaNombre(nombreAsignatura).stream().map(this::mappearCursoEntityADominio).collect(Collectors.toList());
+    }
+
 
 }

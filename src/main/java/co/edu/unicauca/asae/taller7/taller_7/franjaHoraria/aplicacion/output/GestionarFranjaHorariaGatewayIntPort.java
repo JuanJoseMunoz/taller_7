@@ -2,6 +2,7 @@ package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.output;
 
 import java.util.List;
 
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Curso;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.FranjaHoraria;
 
 public interface GestionarFranjaHorariaGatewayIntPort {
@@ -16,4 +17,6 @@ public interface GestionarFranjaHorariaGatewayIntPort {
     public int eliminarFranjasPorCurso(Integer idCurso);
 
     List<Object[]> obtenerDetalleFranjasCurso(int cursoId);
+
+    List<Curso> listarCursosByAsignatura(String nombreAsignatura);
 }

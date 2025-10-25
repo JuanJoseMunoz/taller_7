@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.aplicacion.input.GestionarFranjaHorariaCUIntPort;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.Curso;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.modelos.FranjaHoraria;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.dominio.validacionesCadena.Orquestadorvalidaciones;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTOPeticion.FranjaHorariaDTOPeticion;
+import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.CursoDTORespuesta;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDTORespuesta;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDeCursoDTORespuesta;
 import co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta.FranjaHorariaDeDocenteDTORespuesta;
@@ -70,5 +72,13 @@ public class FranjasHorariasRestController {
         int eliminadas = objGestionarFranjaHorariaCUInt.eliminarFranjasPorCurso(cursoId);
         String mensaje = String.format("Se eliminaron %d franja(s) horaria(s) del curso", eliminadas);
         return new ResponseEntity<>(mensaje, HttpStatus.OK);
+    }
+
+    @GetMapping("/curso/{nomAsignatura}")
+    public ResponseEntity<List<CursoDTORespuesta>> listarCursosByAsig(@PathVariable String nomAsignatura) {
+        List<Curso> cursos = objGestionarFranjaHorariaCUInt.listarCursosPorAsignatura(nomAsignatura);
+        List<CursoDTORespuesta> CursosDTO = objMapeador
+                .mappearCurso(cursos);
+        return new ResponseEntity<>(CursosDTO, HttpStatus.OK);
     }
 }

@@ -36,7 +36,7 @@ public class GestionarFranjaHorariaCUAdapter implements GestionarFranjaHorariaCU
 
     @Override
     public List<Curso> listarCursosPorAsignatura(String nombreAsignatura) {
-        return null;
+        return this.objGestionarFranjaHorariaGateway.listarCursosByAsignatura(nombreAsignatura);
     }
 
     @Override

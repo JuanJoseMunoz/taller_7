@@ -117,6 +117,24 @@ public class FranjaHorariaMapperInfraestructuraDominio {
         return dto;
     }
 
+    public List<CursoDTORespuesta> mappearCurso(List<Curso> cursos) {
+        return cursos.stream()
+                .map(this::mappearCursoRespuesta)
+                .collect(Collectors.toList());
+        
+    }
+
+    private CursoDTORespuesta mappearCursoRespuesta(Curso curso) {
+        CursoDTORespuesta dto = new CursoDTORespuesta();
+        dto.setId(curso.getId());
+        dto.setNombre(curso.getNombre());
+        dto.setDocentes(curso.getDocentes().stream()
+                .map(this::mappearDocente)
+                .collect(Collectors.toSet()));
+        return dto;
+    }
+
+
     private Set<DocenteDTORespuesta> mappearDocentes(Set<Docente> docentes) {
         return docentes.stream()
                 .map(this::mappearDocente)

@@ -14,9 +14,7 @@ public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaE
 
        List<FranjaHorariaEntity> findByObjCursoIdCurso(Integer idCurso);
 
-       @Query("SELECT CASE WHEN COUNT(f) > 0 THEN true ELSE false END FROM FranjaHorariaEntity f " +
-                     "WHERE f.objEspacioFisico.id = :idEspacioFisico AND f.dia = :dia " +
-                     "AND f.horaInicio < :horaFin AND f.horaFin > :horaInicio")
+       @Query("SELECT CASE WHEN COUNT(f) > 0 THEN true ELSE false END FROM FranjaHorariaEntity f " + "WHERE f.objEspacioFisico.id = :idEspacioFisico AND f.dia = :dia " + "AND f.horaInicio < :horaFin AND f.horaFin > :horaInicio")
        boolean isEspacioFisicoOcupado(@Param("idEspacioFisico") Integer idEspacioFisico,
                      @Param("dia") String dia,
                      @Param("horaInicio") LocalTime horaInicio,

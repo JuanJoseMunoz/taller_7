@@ -37,7 +37,7 @@ public class ValidadorDocenteDisponibleImpl extends ManejadorValidadorFranjaHora
 
             if (info == 1) {
                 String mensaje = String.format(
-                        "El docente '%s %s' (ID: %d) ya está ocupado el %s de %s a %s",
+                        "El docente %s %s ya está ocupado",
                         docente.getNombre(),
                         docente.getApellido(),
                         docente.getId(),
