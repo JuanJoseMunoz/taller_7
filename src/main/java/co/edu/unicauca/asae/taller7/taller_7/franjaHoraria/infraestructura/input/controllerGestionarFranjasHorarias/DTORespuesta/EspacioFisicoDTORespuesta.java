@@ -1,6 +1,6 @@
 package co.edu.unicauca.asae.taller7.taller_7.franjaHoraria.infraestructura.input.controllerGestionarFranjasHorarias.DTORespuesta;
 
-import java.util.Set;
+import javax.print.DocFlavor.STRING;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +11,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CursoDTORespuesta {
-    private Integer id;
+public class EspacioFisicoDTORespuesta {
+    private int id;
     private String nombre;
-    private Set<DocenteDTORespuesta> docentes;
+    private Integer capacidad;
+    private String estado;
 }

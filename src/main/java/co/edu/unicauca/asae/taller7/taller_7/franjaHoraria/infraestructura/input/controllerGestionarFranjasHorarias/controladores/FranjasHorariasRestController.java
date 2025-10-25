@@ -34,26 +34,24 @@ public class FranjasHorariasRestController {
             @Valid @RequestBody FranjaHorariaDTOPeticion objFranjaHoraria) {
         FranjaHoraria objFranjaHorariaCrear = objMapeador.mappearDePeticionAFranjaHoraria(objFranjaHoraria);
         FranjaHoraria objFranjaHorariaCreada = objGestionarFranjaHorariaCUInt.crearFranjaHoraria(objFranjaHorariaCrear);
-        ResponseEntity<FranjaHorariaDTORespuesta> objRespuesta = new ResponseEntity<FranjaHorariaDTORespuesta>(
-                objMapeador.mappearDeFranjaHorariaARespuesta(objFranjaHorariaCreada), HttpStatus.CREATED);
-        return objRespuesta;
+        FranjaHorariaDTORespuesta objRespuesta = objMapeador.mappearDeFranjaHorariaARespuesta(objFranjaHorariaCreada);
+        return new ResponseEntity<>(objRespuesta, HttpStatus.CREATED);
     }
 
     @GetMapping("/franjasHorarias/curso/{idCurso}")
     public ResponseEntity<List<FranjaHorariaDeCursoDTORespuesta>> listarFranjasPorCurso(@PathVariable Integer idCurso) {
         List<FranjaHoraria> franjas = objGestionarFranjaHorariaCUInt.listarFranjasPorCurso(idCurso);
-        ResponseEntity<List<FranjaHorariaDeCursoDTORespuesta>> objRespuesta = new ResponseEntity<List<FranjaHorariaDeCursoDTORespuesta>>(
-                objMapeador.mappearDeFranjasHorariasACursoRespuestas(franjas), HttpStatus.OK);
-        return objRespuesta;
+        List<FranjaHorariaDeCursoDTORespuesta> franjasDTO = objMapeador
+                .mappearListaDeFranjaHorariaACursoRespuesta(franjas);
+        return new ResponseEntity<>(franjasDTO, HttpStatus.OK);
     }
 
     @GetMapping("/franjasHorarias/docente/{idDocente}")
     public ResponseEntity<List<FranjaHorariaDeDocenteDTORespuesta>> listarFranjasPorDocente(
             @PathVariable @Min(value = 1, message = "{docente.id.min}") Integer idDocente) {
         List<FranjaHoraria> franjas = objGestionarFranjaHorariaCUInt.listarFranjasPorDocente(idDocente);
-        ResponseEntity<List<FranjaHorariaDeDocenteDTORespuesta>> objRespuesta = new ResponseEntity<List<FranjaHorariaDeDocenteDTORespuesta>>(
-                objMapeador.mappearDeFranjasHorariasADocenteRespuestas(franjas), HttpStatus.OK);
-        return objRespuesta;
+        List<FranjaHorariaDeDocenteDTORespuesta> franjasDTO = objMapeador
+                .mappearListaDeFranjaHorariaADocenteRespuesta(franjas);
+        return new ResponseEntity<>(franjasDTO, HttpStatus.OK);
     }
-
 }

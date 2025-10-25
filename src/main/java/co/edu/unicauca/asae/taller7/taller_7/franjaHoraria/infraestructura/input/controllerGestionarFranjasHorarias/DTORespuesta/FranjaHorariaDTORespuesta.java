@@ -5,21 +5,19 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class FranjaHorariaDTORespuesta {
     private Integer id;
     private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    private Integer curso;
-    private List<Integer> docentesIds;
-    private Integer espacioFisico;
+    private Integer cursoId;
+    private Integer espacioFisicoId;
 
-    public FranjaHorariaDTORespuesta() {
-
-    }
 }
