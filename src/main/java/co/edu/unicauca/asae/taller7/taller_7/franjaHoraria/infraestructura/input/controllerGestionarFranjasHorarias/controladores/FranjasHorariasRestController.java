@@ -57,4 +57,10 @@ public class FranjasHorariasRestController {
                 .mappearListaDeFranjaHorariaADocenteRespuesta(franjas);
         return new ResponseEntity<>(franjasDTO, HttpStatus.OK);
     }
+
+    @GetMapping("/franjasHorariasDetalleCurso/{cursoId}")
+    public ResponseEntity<List<Object[]>> obtenerDetalleFranjasCurso(@PathVariable @Min(value = 1, message = "{franjaHoraria.cursoId.min}") int cursoId) {
+        List<Object[]> detalle = objGestionarFranjaHorariaCUInt.obtenerDetalleFranjasCurso(cursoId);
+        return new ResponseEntity<>(detalle, HttpStatus.OK);
+    }
 }

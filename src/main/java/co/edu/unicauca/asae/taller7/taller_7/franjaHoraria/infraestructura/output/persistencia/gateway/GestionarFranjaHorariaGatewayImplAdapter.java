@@ -140,7 +140,6 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
         return docente;
     }
 
-
     private EspacioFisico mappearEspacioEntityADominio(EspacioFisicoEntity entity) {
         EspacioFisico espacio = new EspacioFisico();
         espacio.setId(entity.getId());
@@ -150,4 +149,12 @@ public class GestionarFranjaHorariaGatewayImplAdapter implements GestionarFranja
         ;
         return espacio;
     }
+
+    @Override
+    public List<Object[]> obtenerDetalleFranjasCurso(int cursoId) {
+        List<Object[]> detalle = objFranjaHorariaRepository.consultarByCurso(cursoId);
+        return detalle;
+    }
+
+
 }

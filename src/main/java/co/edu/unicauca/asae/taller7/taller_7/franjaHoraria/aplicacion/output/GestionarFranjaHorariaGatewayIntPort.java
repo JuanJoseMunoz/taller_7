@@ -14,4 +14,6 @@ public interface GestionarFranjaHorariaGatewayIntPort {
     public boolean existeCurso(Integer idCurso);
     
     public int eliminarFranjasPorCurso(Integer idCurso);
+
+    List<Object[]> obtenerDetalleFranjasCurso(int cursoId);
 }

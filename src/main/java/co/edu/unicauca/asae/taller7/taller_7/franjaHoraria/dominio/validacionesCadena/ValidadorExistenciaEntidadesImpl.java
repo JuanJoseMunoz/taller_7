@@ -23,13 +23,7 @@ public class ValidadorExistenciaEntidadesImpl extends ManejadorValidadorFranjaHo
         if (!validacionesGateway.existeCurso(franjaHoraria.getIdCurso())) {
             throw new EntidadNoExisteException("El curso con ID " + franjaHoraria.getIdCurso() + " no existe");
         }
-        
-        System.out.println("\nValidando que existe(n) el(los) docente(s))...");
-        for (Integer idDocente : franjaHoraria.getDocentesIds()) {
-            if (!validacionesGateway.existeDocente(idDocente)) {
-                throw new EntidadNoExisteException("El docente con ID " + idDocente + " no existe");
-            }
-        }
+
         validarSiguiente(franjaHoraria);
     }
 }

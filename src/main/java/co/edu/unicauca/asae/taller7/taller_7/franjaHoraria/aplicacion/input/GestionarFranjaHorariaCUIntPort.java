@@ -17,4 +17,6 @@ public interface GestionarFranjaHorariaCUIntPort {
 
     int eliminarFranjasPorCurso(Integer idCurso);
 
+    List<Object[]> obtenerDetalleFranjasCurso(int cursoId);
+
 }

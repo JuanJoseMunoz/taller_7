@@ -27,7 +27,7 @@ public interface FranjaHorariaRepositoryInt extends JpaRepository<FranjaHorariaE
                      @Param("horaInicio") LocalTime horaInicio, @Param("horaFin") LocalTime horaFin);
 
        @Query("SELECT c, f, e FROM CursoEntity c JOIN c.franjasHorarias f JOIN f.objEspacioFisico e WHERE c.idCurso = :id")
-       Iterable<Object[]> consultarByCurso(@Param("id") Integer id);
+       List<Object[]> consultarByCurso(@Param("id") Integer id);
 
        @Modifying
        @Query(value = "DELETE FROM franjas_horarias WHERE curso_id = :id", nativeQuery = true)
